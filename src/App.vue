@@ -1,28 +1,43 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <Sidebar :data="ecard" />
+
+        <Preview :data="ecard" />
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// Imports
+import Sidebar from './components/Sidebar.vue'
+import Preview from './components/Preview.vue'
 
+// Export Component
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Sidebar,
+    Preview
+  },
+  data() {
+      return {
+          ecard: {
+              step: 1,
+              progress: {
+                  design: false,
+                  color: false,
+                  message: false,
+                  review: false,
+                  complete: false,
+              },
+              values: {
+
+              }
+          }
+      }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
