@@ -1,7 +1,7 @@
 <template>
     <ul id="nav" class="ecard-nav">
         <li v-for="item in navItems">
-            <a :id="item.slug + '-link'" class="nav-link" :href="'#' + item.slug" :data-part="item.step" :data-qt="item.desc">
+            <a :id="item.slug + '-link'" :class="{active: item.status.active, completed: item.status.complete }" class="nav-link" :href="'#' + item.slug" :data-qt="item.desc" @click.prevent="navigationController(item)">
                 <i :class="'edl-icon ' + item.icon"></i>
                 {{item.name}}
             </a>
@@ -22,35 +22,70 @@ export default {
       return {
           navItems: {
               design: {
-                  step: 1,
                   slug: 'design',
                   name: 'Design',
                   icon: 'edl-icon--art-cup',
-                  desc: 'Choose a design'
+                  desc: 'Choose a design',
+                  status: {
+                      complete: false,
+                      active: false,
+                      step: 1,
+                  }
               },
               color: {
-                  step: 2,
                   slug: 'color',
                   name: 'Accent Color',
                   icon: 'edl-icon--design-palette',
-                  desc: 'Choose a color'
+                  desc: 'Choose a color',
+                  status: {
+                      complete: false,
+                      active: false,
+                      step: 2,
+                  }
               },
               message: {
-                  step: 3,
                   slug: 'message',
                   name: 'Message',
                   icon: 'edl-icon--message',
-                  desc: 'Write your message'
+                  desc: 'Write your message',
+                  status: {
+                      complete: false,
+                      active: false,
+                      step: 3,
+                  }
               },
               review: {
-                  step: 4,
                   slug: 'review',
                   name: 'Review',
                   icon: 'edl-icon--check-circle',
-                  desc: 'Review your eCard'
+                  desc: 'Review your eCard',
+                  status: {
+                      complete: false,
+                      active: false,
+                      step: 4,
+                  }
               },
           }
       }
+  },
+  methods: {
+    // Navigation Controller
+    navigationController(item) {
+      // Reset all navItems state
+      for(var i in this.navItems){
+          this.navItems[i].status.active = false
+      }
+
+      // Set local state to active
+      item.status.active = !item.status.active
+
+      // Emit changed data back to parent
+      this.$emit('current-step', item.status.step)
+    }
+  },
+  mounted() {
+      // Send local progress data back to parent/App
+      this.$emit('progress', this.navItems)
   }
 }
 </script>

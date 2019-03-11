@@ -22,16 +22,8 @@ export default {
       return {
           ecard: {
               step: 1,
-              progress: {
-                  design: false,
-                  color: false,
-                  message: false,
-                  review: false,
-                  complete: false,
-              },
-              values: {
-
-              }
+              progress: {},
+              values: {}
           }
       }
   }
