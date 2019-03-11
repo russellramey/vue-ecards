@@ -86,7 +86,21 @@ export default {
       item.status.active = !item.status.active
 
       // Emit changed data back to parent
-      this.$emit('current-step', item.status.step)
+      this.$emit('current-step', item)
+
+      // Activate Modal
+      this.modalController()
+    },
+    // Modal controller
+    modalController() {
+        var comp = this
+        // Reset modal
+        this.data.modal.active = false
+        // Set timeout for activation
+        setTimeout(function(){
+            // Set modal.active to true
+            comp.data.modal.active = true
+        }, 150);
     }
   },
   // Component is Mounted
@@ -102,6 +116,8 @@ export default {
     list-style: none;
     margin: 0;
     margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
 
     // Navigation / Step Links
     .nav-link {

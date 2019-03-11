@@ -1,8 +1,8 @@
 <template>
     <div id="app">
         <Sidebar :data="ecard" />
-
         <Preview :data="ecard" />
+        <Modal :data="ecard" />
     </div>
 </template>
 
@@ -10,6 +10,7 @@
 // Imports
 import Sidebar from './components/Sidebar.vue'
 import Preview from './components/Preview.vue'
+import Modal from './components/Modal.vue'
 
 // Export Component
 export default {
@@ -17,7 +18,8 @@ export default {
   // Child components
   components: {
     Sidebar,
-    Preview
+    Preview,
+    Modal
   },
   // Component Data
   data() {
@@ -26,9 +28,18 @@ export default {
           ecard: {
               step: null,
               progress: {},
-              values: {}
+              values: {},
+              modal: {
+                  active: false
+              }
           }
       }
+  },
+  // Component Functions
+  methods: {
+      getModalData (data) {
+        this.ecard.modal = data
+      },
   }
 }
 </script>
