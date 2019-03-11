@@ -21,7 +21,7 @@ export default {
   data() {
       return {
           ecard: {
-              step: 1,
+              step: null,
               progress: {},
               values: {}
           }

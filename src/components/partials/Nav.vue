@@ -20,8 +20,8 @@ export default {
   },
   data() {
       return {
-          navItems: {
-              design: {
+          navItems: [
+              {
                   slug: 'design',
                   name: 'Design',
                   icon: 'edl-icon--art-cup',
@@ -29,10 +29,10 @@ export default {
                   status: {
                       complete: false,
                       active: false,
-                      step: 1,
+                      step: 0,
                   }
               },
-              color: {
+              {
                   slug: 'color',
                   name: 'Accent Color',
                   icon: 'edl-icon--design-palette',
@@ -40,10 +40,10 @@ export default {
                   status: {
                       complete: false,
                       active: false,
-                      step: 2,
+                      step: 1,
                   }
               },
-              message: {
+              {
                   slug: 'message',
                   name: 'Message',
                   icon: 'edl-icon--message',
@@ -51,10 +51,10 @@ export default {
                   status: {
                       complete: false,
                       active: false,
-                      step: 3,
+                      step: 2,
                   }
               },
-              review: {
+              {
                   slug: 'review',
                   name: 'Review',
                   icon: 'edl-icon--check-circle',
@@ -62,10 +62,10 @@ export default {
                   status: {
                       complete: false,
                       active: false,
-                      step: 4,
+                      step: 3,
                   }
               },
-          }
+          ]
       }
   },
   methods: {
@@ -86,6 +86,9 @@ export default {
   mounted() {
       // Send local progress data back to parent/App
       this.$emit('progress', this.navItems)
+
+      // Debug
+      this.navItems[0].status.active = true
   }
 }
 </script>
