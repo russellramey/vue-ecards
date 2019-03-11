@@ -13,13 +13,18 @@
 // Export Component
 export default {
   name: 'nav',
+  // Component Properties
   props: {
+    // Data from parent/App
     data: {
         type: Object
     }
   },
+  // Component Data
   data() {
       return {
+          // Nav Array,
+          // steps start at 0 for index purposes
           navItems: [
               {
                   slug: 'design',
@@ -68,6 +73,7 @@ export default {
           ]
       }
   },
+  // Component Functions/Methods
   methods: {
     // Navigation Controller
     navigationController(item) {
@@ -83,12 +89,10 @@ export default {
       this.$emit('current-step', item.status.step)
     }
   },
+  // Component is Mounted
   mounted() {
       // Send local progress data back to parent/App
       this.$emit('progress', this.navItems)
-
-      // Debug
-      this.navItems[0].status.active = true
   }
 }
 </script>

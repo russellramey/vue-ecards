@@ -19,14 +19,18 @@ import Nav from './partials/Nav.vue'
 // Export Component
 export default {
   name: 'sidebar',
+  // Child components
   components: {
       Nav
   },
+  // Component properties
   props: {
+    // Data from parent/App
     data: {
         type: Object
     }
   },
+  // Component Functions
   methods: {
     getProgress (data) {
       this.data.progress = data

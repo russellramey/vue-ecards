@@ -14,12 +14,15 @@ import Preview from './components/Preview.vue'
 // Export Component
 export default {
   name: 'app',
+  // Child components
   components: {
     Sidebar,
     Preview
   },
+  // Component Data
   data() {
       return {
+          // eCard data controller
           ecard: {
               step: null,
               progress: {},

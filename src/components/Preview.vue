@@ -1,6 +1,8 @@
 <template>
     <div id="preview" class="ecard-preview">
         <span id="view-preview"></span>
+
+        <p v-if="data.step != null">{{data.progress[data.step].name}} Is Active</p>
     </div>
 </template>
 
@@ -8,10 +10,12 @@
 // Export Component
 export default {
   name: 'preview',
+  // Component properties
   props: {
+    // Data from parent/App
     data: {
         type: Object
-    }
+    },
   }
 }
 </script>
