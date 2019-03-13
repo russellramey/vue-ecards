@@ -1,6 +1,6 @@
 <template>
-    <div id="modal" v-if="data.part != null" :class="{active: data.modal.active}">
-        <div>{{data.part.name}} Is Active</div>
+    <div id="modal" v-if="data.current_step != null" :class="{active: data.modal.active}">
+        <div>{{data.current_step.meta.name}} Is Active</div>
 
         <modal-nav :data="data" />
     </div>

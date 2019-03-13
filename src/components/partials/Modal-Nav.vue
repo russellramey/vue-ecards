@@ -1,7 +1,7 @@
 <template>
     <div id="modal-nav">
-        <button type="button" class="button button-secondary off-lt">Back</button>
-        <button type="button" class="button off-rt">Next</button>
+        <button @click.prevent="goToStep('prev')" v-if="this.data.current_step.id >= 1" type="button" class="button button-secondary off-lt">Back</button>
+        <button @click.prevent="goToStep('next')" type="button" class="button off-rt">Next</button>
     </div>
 </template>
 
@@ -21,7 +21,18 @@ export default {
   },
   // Component Functions
   methods: {
-
+      goToStep(direction) {
+        // Get current step
+        var current = this.data.current_step.id
+        // Check direction
+        if (direction != 'next'){
+            // change global step
+            this.data.current_step = this.data.steps[current - 1]
+        } else {
+            // change global step
+            this.data.current_step = this.data.steps[current + 1]
+        }
+    },
   }
 }
 </script>

@@ -26,9 +26,9 @@ export default {
       return {
           // eCard data controller
           ecard: {
-              part: null,
-              progress: {},
-              values: {
+              steps: {},
+              current_step: null,
+              options: {
                   ecard_design: null,
                   ecard_from_email: null,
                   ecard_from_name: null,
@@ -37,6 +37,7 @@ export default {
                   ecard_to_name: []
               },
               modal: {
+                  content: null,
                   active: false
               }
           }

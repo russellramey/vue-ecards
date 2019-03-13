@@ -2,8 +2,8 @@
     <ul id="nav" class="ecard-nav">
         <li v-for="item in navItems" :key="item.status.step">
             <a @click.prevent="navigationController(item)" :id="item.slug + '-link'" :class="{active: item.status.active, completed: item.status.complete, disabled: item.status.disabled }" class="nav-link" :href="'#' + item.slug" :data-qt="item.desc">
-                <i :class="'edl-icon ' + item.icon"></i>
-                {{item.name}}
+                <i :class="'edl-icon ' + item.meta.icon"></i>
+                {{item.meta.name}}
             </a>
         </li>
     </ul>
@@ -27,51 +27,59 @@ export default {
           // steps start at 0 for index purposes
           navItems: [
               {
+                  id: 0,
                   slug: 'design',
-                  name: 'Design',
-                  icon: 'edl-icon--art-cup',
-                  desc: 'Choose a design',
+                  meta: {
+                      name: 'Design',
+                      icon: 'edl-icon--art-cup',
+                      desc: 'Choose a design',
+                  },
                   status: {
                       disabled: false,
                       complete: false,
                       active: false,
-                      step: 0,
                   }
               },
               {
+                  id: 1,
                   slug: 'color',
-                  name: 'Accent Color',
-                  icon: 'edl-icon--design-palette',
-                  desc: 'Choose a color',
+                  meta: {
+                      name: 'Accent Color',
+                      icon: 'edl-icon--design-palette',
+                      desc: 'Choose a color',
+                  },
                   status: {
                       disabled: false,
                       complete: false,
                       active: false,
-                      step: 1,
                   }
               },
               {
+                  id: 2,
                   slug: 'message',
-                  name: 'Message',
-                  icon: 'edl-icon--message',
-                  desc: 'Write your message',
+                  meta: {
+                      name: 'Message',
+                      icon: 'edl-icon--message',
+                      desc: 'Write your message',
+                  },
                   status: {
                       disabled: false,
                       complete: false,
                       active: false,
-                      step: 2,
                   }
               },
               {
+                  id: 3,
                   slug: 'review',
-                  name: 'Review',
-                  icon: 'edl-icon--check-circle',
-                  desc: 'Review your eCard',
+                  meta: {
+                      name: 'Review',
+                      icon: 'edl-icon--check-circle',
+                      desc: 'Review your eCard',
+                  },
                   status: {
                       disabled: true,
                       complete: false,
                       active: false,
-                      step: 3,
                   }
               },
           ]
@@ -86,14 +94,18 @@ export default {
           this.navItems[i].status.active = false
       }
 
-      // Set local state to active
-      item.status.active = !item.status.active
+      // Check if item is disabled
+      if (!item.status.disabled){
+          // Set local state to active
+          item.status.active = !item.status.active
 
-      // Emit changed data back to parent
-      this.$emit('current-step', item)
+          // Emit changed data back to parent
+          this.$emit('current-step', item)
 
-      // Activate Modal
-      this.modalController()
+          // Activate Modal
+          this.modalController()
+      }
+
     },
     // Modal controller
     modalController() {
@@ -107,11 +119,26 @@ export default {
         }, 150);
     }
   },
+  // Computed values
+  computed: {
+    // Return current step
+    current_step() {
+      return this.data.current_step;
+    }
+  },
+  // Watch for changes
+  watch: {
+    // whenever current_step changes
+    current_step() {
+        // Go to navItem
+        this.navigationController(this.data.current_step)
+    }
+  },
   // Component is Mounted
   mounted() {
       // Send local progress data back to parent/App
-      this.$emit('progress', this.navItems)
-  }
+      this.$emit('steps', this.navItems)
+  },
 }
 </script>
 

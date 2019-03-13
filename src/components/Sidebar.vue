@@ -6,7 +6,7 @@
             <p>Choose a card design, select an accent color and write your message. You’ll have a chance to review the eCard before sending.</p>
         </div>
 
-        <main-nav :data="data" @progress="getProgress" @current-step="getCurrentStep" />
+        <main-nav :data="data" @steps="getAllSteps" @current-step="getCurrentStep" />
 
         <a id="action-new" href="#new" onclick="location.reload();"><i class="edl-icon edl-icon--refresh"></i> Start Over</a>
     </div>
@@ -32,14 +32,13 @@ export default {
   },
   // Component Functions
   methods: {
-    getProgress (data) {
-        this.data.progress = data
+    getAllSteps (steps) {
+        this.data.steps = steps
     },
     getCurrentStep(step){
-        this.data.part = step
+        this.data.current_step = step
     }
   }
-
 }
 </script>
 
