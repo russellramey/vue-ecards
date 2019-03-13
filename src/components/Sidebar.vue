@@ -6,7 +6,7 @@
             <p>Choose a card design, select an accent color and write your message. You’ll have a chance to review the eCard before sending.</p>
         </div>
 
-        <Nav :data="data" @progress="getProgress" @current-step="getCurrentStep" />
+        <main-nav :data="data" @progress="getProgress" @current-step="getCurrentStep" />
 
         <a id="action-new" href="#new" onclick="location.reload();"><i class="edl-icon edl-icon--refresh"></i> Start Over</a>
     </div>
@@ -14,14 +14,14 @@
 
 <script>
 // Imports
-import Nav from './partials/Nav.vue'
+import MainNav from './partials/Main-Nav.vue'
 
 // Export Component
 export default {
   name: 'sidebar',
   // Child components
   components: {
-      Nav
+      MainNav
   },
   // Component properties
   props: {
@@ -33,10 +33,10 @@ export default {
   // Component Functions
   methods: {
     getProgress (data) {
-      this.data.progress = data
+        this.data.progress = data
     },
     getCurrentStep(step){
-        this.data.step = step
+        this.data.part = step
     }
   }
 

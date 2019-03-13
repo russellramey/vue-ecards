@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-        <Sidebar :data="ecard" />
-        <Preview :data="ecard" />
-        <Modal :data="ecard" />
+        <sidebar :data="ecard" />
+        <preview :data="ecard" />
+        <modal :data="ecard" />
     </div>
 </template>
 
@@ -26,21 +26,22 @@ export default {
       return {
           // eCard data controller
           ecard: {
-              step: null,
+              part: null,
               progress: {},
-              values: {},
+              values: {
+                  ecard_design: null,
+                  ecard_from_email: null,
+                  ecard_from_name: null,
+                  ecard_message: null,
+                  ecard_to_email: [],
+                  ecard_to_name: []
+              },
               modal: {
                   active: false
               }
           }
       }
   },
-  // Component Functions
-  methods: {
-      getModalData (data) {
-        this.ecard.modal = data
-      },
-  }
 }
 </script>
 

@@ -1,16 +1,21 @@
 <template>
-    <div id="modal" v-if="data.step != null" :class="{active: data.modal.active}">
-        <div>{{data.step.name}} Is Active</div>
+    <div id="modal" v-if="data.part != null" :class="{active: data.modal.active}">
+        <div>{{data.part.name}} Is Active</div>
+
+        <modal-nav :data="data" />
     </div>
 </template>
 
 <script>
+// Imports
+import ModalNav from './partials/Modal-Nav.vue'
+
 // Export Component
 export default {
   name: 'modal',
   // Child components
   components: {
-
+      ModalNav
   },
   // Component properties
   props: {

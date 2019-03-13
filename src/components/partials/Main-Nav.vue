@@ -1,7 +1,7 @@
 <template>
     <ul id="nav" class="ecard-nav">
-        <li v-for="item in navItems">
-            <a :id="item.slug + '-link'" :class="{active: item.status.active, completed: item.status.complete }" class="nav-link" :href="'#' + item.slug" :data-qt="item.desc" @click.prevent="navigationController(item)">
+        <li v-for="item in navItems" :key="item.status.step">
+            <a @click.prevent="navigationController(item)" :id="item.slug + '-link'" :class="{active: item.status.active, completed: item.status.complete, disabled: item.status.disabled }" class="nav-link" :href="'#' + item.slug" :data-qt="item.desc">
                 <i :class="'edl-icon ' + item.icon"></i>
                 {{item.name}}
             </a>
@@ -12,7 +12,7 @@
 <script>
 // Export Component
 export default {
-  name: 'nav',
+  name: 'main-nav',
   // Component Properties
   props: {
     // Data from parent/App
@@ -32,6 +32,7 @@ export default {
                   icon: 'edl-icon--art-cup',
                   desc: 'Choose a design',
                   status: {
+                      disabled: false,
                       complete: false,
                       active: false,
                       step: 0,
@@ -43,6 +44,7 @@ export default {
                   icon: 'edl-icon--design-palette',
                   desc: 'Choose a color',
                   status: {
+                      disabled: false,
                       complete: false,
                       active: false,
                       step: 1,
@@ -54,6 +56,7 @@ export default {
                   icon: 'edl-icon--message',
                   desc: 'Write your message',
                   status: {
+                      disabled: false,
                       complete: false,
                       active: false,
                       step: 2,
@@ -65,6 +68,7 @@ export default {
                   icon: 'edl-icon--check-circle',
                   desc: 'Review your eCard',
                   status: {
+                      disabled: true,
                       complete: false,
                       active: false,
                       step: 3,
