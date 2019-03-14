@@ -1,8 +1,13 @@
 <template>
     <div id="modal" v-if="data.current_step != null" :class="{active: data.modal.active}">
-        <div>{{data.current_step.meta.name}} Is Active</div>
+
+        <div id="modal-meta">
+            <a @click.prevent="closeModal" href="#preview" class="modal-close"><i class="edl-icon edl-icon--close"></i></a>
+            <h4><span>{{data.current_step.meta.desc}}</span></h4>
+        </div>
 
         <modal-nav :data="data" />
+
     </div>
 </template>
 
@@ -24,10 +29,13 @@ export default {
           type: Object
       }
   },
-  // Component Data
-  data() {
-      return {
-
+  methods: {
+      // Close modal action
+      closeModal(){
+          // Set modal state to false
+          this.data.modal.active = false
+          // Set active nav to false
+          this.data.current_step.status.active = false
       }
   }
 }

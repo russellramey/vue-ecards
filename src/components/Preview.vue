@@ -1,19 +1,34 @@
 <template>
     <div id="preview" class="ecard-preview">
-        <span id="view-preview"></span>
+        <span @click.prevent="goToStep(1)" id="view-preview"></span>
+        <eCard :data="data" />
     </div>
 </template>
 
 <script>
+// Imports
+import eCard from './partials/eCard.vue'
+
 // Export Component
 export default {
   name: 'preview',
+  // Child components
+  components: {
+      eCard
+  },
   // Component properties
   props: {
     // Data from parent/App
     data: {
         type: Object
     },
+  },
+  methods: {
+      // Navigate to nav Step action
+      goToStep(index) {
+        // change global step
+        this.data.current_step = this.data.steps[index]
+      },
   }
 }
 </script>

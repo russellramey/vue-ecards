@@ -6,9 +6,6 @@
 </template>
 
 <script>
-// Imports
-
-
 // Export Component
 export default {
   name: 'modal-nav',
