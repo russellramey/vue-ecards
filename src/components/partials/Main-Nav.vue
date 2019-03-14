@@ -24,7 +24,6 @@ export default {
   data() {
       return {
           // Nav Array,
-          // steps start at 0 for index purposes
           navItems: [
               {
                   id: 0,
@@ -104,6 +103,10 @@ export default {
 
           // Activate Modal
           this.modalController()
+      } else {
+
+          // Hide modal if item is disabled
+          this.data.modal.active = false
       }
 
     },
