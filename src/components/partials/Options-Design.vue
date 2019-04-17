@@ -3,7 +3,7 @@ ul#modal-design
     li(v-for="(option, index) in options" v-bind:key="index")
         a.option.option-design
             label.input-radio(:for="option.image")
-                input(v-bind:id="option.image" v-bind:value="option.image" type="radio" name="data-design")
+                input(v-model="data.options.ecard_design" v-bind:id="option.image" v-bind:value="option.image" type="radio" name="data-design")
                 img(v-bind:src="'https://assets.sabre.com/images/ecards/' + option.image" width="auto" height="auto")
                 img(src="images/graphic_text_placeholder.png" width="auto" height="auto")
 </template>

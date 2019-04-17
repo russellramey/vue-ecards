@@ -1,11 +1,12 @@
 <template lang="pug">
 #preview.ecard-preview
     span#view-preview(@click.prevent="goToStep(1)")
-    eCard(:data="data")
+    eCard(:data="dataStore")
 </template>
 
 <script>
 // Imports
+import dataStore from '../stores/dataStore.js'
 import eCard from './partials/eCard.vue'
 
 // Export Component
@@ -15,18 +16,19 @@ export default {
   components: {
       eCard
   },
-  // Component properties
-  props: {
-    // Data from parent/App
-    data: {
-        type: Object
-    },
+  // Component data
+  data(){
+      return{
+          // App data
+          dataStore: dataStore
+      }
   },
+  // Component functions
   methods: {
       // Navigate to nav Step action
       goToStep(index) {
         // change global step
-        this.data.current_step = this.data.steps[index]
+        dataStore.ecard.current_step = dataStore.ecard.steps[index]
       },
   }
 }

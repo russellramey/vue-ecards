@@ -8,12 +8,11 @@
 // Export Component
 export default {
   name: 'modal-nav',
-  // Component Properties
+  // Parent data
   props: {
-    // Data from parent/App
-    data: {
-        type: Object
-    }
+      data: {
+          type: Object
+      }
   },
   // Component Functions
   methods: {

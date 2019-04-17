@@ -1,12 +1,13 @@
 <template lang="pug">
 #app
-    sidebar(:data="ecard")
-    preview(:data="ecard")
-    modal(:data="ecard")
+    sidebar
+    preview
+    modal
 </template>
 
 <script>
 // Imports
+import dataStore from './stores/dataStore.js'
 import Sidebar from './components/Sidebar.vue'
 import Preview from './components/Preview.vue'
 import Modal from './components/Modal.vue'
@@ -23,23 +24,8 @@ export default {
   // Component Data
   data() {
       return {
-          // eCard data controller
-          ecard: {
-              steps: {},
-              current_step: null,
-              options: {
-                  ecard_design: null,
-                  ecard_from_email: null,
-                  ecard_from_name: null,
-                  ecard_message: null,
-                  ecard_to_email: [],
-                  ecard_to_name: []
-              },
-              modal: {
-                  content: null,
-                  active: false
-              }
-          }
+          // App Data
+          dataStore: dataStore
       }
   },
 }

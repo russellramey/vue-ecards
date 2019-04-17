@@ -5,7 +5,7 @@
         h6 Create and send eCards
         p Choose a card design, select an accent color and write your message. You’ll have a chance to review the eCard before sending.
 
-    main-nav(:data="data" @steps="getAllSteps" @current-step="getCurrentStep")
+    main-nav(@steps="getAllSteps" @current-step="getCurrentStep")
 
     a#action-new(href="#new" onclick="location.reload();")
         i.edl-icon.edl-icon--refresh Start Over
@@ -13,6 +13,7 @@
 
 <script>
 // Imports
+import dataStore from '../stores/dataStore.js'
 import MainNav from './partials/Main-Nav.vue'
 
 // Export Component
@@ -22,20 +23,19 @@ export default {
   components: {
       MainNav
   },
-  // Component properties
-  props: {
-    // Data from parent/App
-    data: {
-        type: Object
-    }
+  // Component data
+  data(){
+      return {
+          dataStore: dataStore
+      }
   },
   // Component Functions
   methods: {
     getAllSteps (steps) {
-        this.data.steps = steps
+        dataStore.ecard.steps = steps
     },
     getCurrentStep(step){
-        this.data.current_step = step
+        dataStore.ecard.current_step = step
     }
   }
 }

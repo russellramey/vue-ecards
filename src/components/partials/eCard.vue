@@ -2,19 +2,18 @@
 #ecard.preview.preview-data
     .ecard-graphic(data-qt="Edit design")
         a(@click.prevent="goToStep(0)" href="#design")
-            img#ecard-image.preview-data(src="https://assets.sabre.com/images/ecards/CNY2019-BANNER-1.jpg" width="auto" height="auto")
+            img#ecard-image.preview-data(v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design" width="auto" height="auto")
         .ecard-content
             h1.ecard-title
-                span(@click.prevent="goToStep(2)" data-qt="Edit greeting") Your Greeting
+                span(@click.prevent="goToStep(2)" data-qt="Edit greeting") {{ data.ecard.options.ecard_greeting }}
             p.ecard-name
-                span(@click.prevent="goToStep(2)" data-qt="Edit name") To Name
+                span(@click.prevent="goToStep(2)" data-qt="Edit name") {{ data.ecard.options.ecard_to_name[0] }}
             p.ecard-message
-                span(@click.prevent="goToStep(2)" data-qt="Edit message") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in egestas justo. Aliquam diam nibh, pharetra nec mattis eu, tempor at lacus. Vivamus ac lorem lacus. Mauris augue mi, feugiat in est eget, iaculis tempus nibh. Aliquam tristique, neque sed pellentesque fermentum, massa risus tincidunt ipsum, sed tempor magna sem at nisl.
-
+                span(@click.prevent="goToStep(2)" data-qt="Edit message") {{ data.ecard.options.ecard_message }}
         .ecard-meta
             p.ecard-author
                 span.label Sent by:
-                span.author Name
+                span.author {{ data.ecard.options.ecard_from_name }}
                 span.date Date here
             p.ecard-logo
                 img(src="https://assets.sabre.com/common/edl/img/sabre-logo-red.svg" width="auto" height="auto")
@@ -24,19 +23,18 @@
 // Export Component
 export default {
   name: 'ecard',
-  // Component Properties
+  // Parent data
   props: {
-    // Data from parent/App
-    data: {
-        type: Object
-    }
+      data:{
+          type: Object
+      }
   },
-  // Component Functions
+  // Component functions
   methods: {
       // Navigate to nav Step action
       goToStep(index) {
         // change global step
-        this.data.current_step = this.data.steps[index]
+        this.data.ecard.current_step = this.data.ecard.steps[index]
       },
   }
 }

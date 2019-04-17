@@ -1,19 +1,20 @@
 <template lang="pug">
-#modal(v-if="data.current_step != null" v-bind:class="{active: data.modal.active}")
+#modal(v-if="dataStore.ecard.current_step != null" v-bind:class="{active: dataStore.modal.active}")
     #modal-meta
         a.modal-close(@click.prevent="closeModal" href="#preview")
             i.edl-icon.edl-icon--close
-        h4 {{data.current_step.meta.desc}}
+        h4 {{dataStore.ecard.current_step.meta.desc}}
 
     #modal-content
-        design-options(:data="data" v-if="this.data.current_step.slug === 'design'")
-        color-options(:data="data" v-if="this.data.current_step.slug === 'color'")
+        design-options(:data="dataStore.ecard" v-if="dataStore.ecard.current_step.slug === 'design'")
+        color-options(:data="dataStore.ecard" v-if="dataStore.ecard.current_step.slug === 'color'")
 
-    modal-nav(:data="data")
+    modal-nav(:data="dataStore.ecard")
 </template>
 
 <script>
 // Imports
+import dataStore from '../stores/dataStore.js'
 import ModalNav from './partials/Modal-Nav.vue'
 import DesignOptions from './partials/Options-Design.vue'
 import ColorOptions from './partials/Options-Color.vue'
@@ -27,20 +28,20 @@ export default {
       DesignOptions,
       ColorOptions
   },
-  // Component properties
-  props: {
-      // Data from parent/App
-      data: {
-          type: Object
+  // Component data
+  data(){
+      return{
+          // App data
+          dataStore: dataStore
       }
   },
   methods: {
       // Close modal action
       closeModal(){
           // Set modal state to false
-          this.data.modal.active = false
+          dataStore.modal.active = false
           // Set active nav to false
-          this.data.current_step.status.active = false
+          dataStore.ecard.current_step.status.active = false
       }
   }
 }

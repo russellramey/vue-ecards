@@ -3,7 +3,7 @@ ul#modal-color
     li(v-for="(option, index) in options" v-bind:key="index")
         a.option.option-color
             label.input-radio(:for="option.name")
-                input.data-input(v-bind:id="option.name" v-bind:value="option.color + option.shadow" type="radio" name="data-color")
+                input.data-input(v-model="data.options.ecard_color" v-bind:id="option.name" v-bind:value="option.color + ',' + option.shadow" type="radio" name="data-color")
                 span.color-palette-block(:id="'color-' + option.name") {{option.name}}
 </template>
 

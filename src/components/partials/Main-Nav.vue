@@ -8,20 +8,18 @@
 
 
 <script>
+// Imports
+import dataStore from '../../stores/dataStore.js'
+
 // Export Component
 export default {
   name: 'main-nav',
-  // Component Properties
-  props: {
-    // Data from parent/App
-    data: {
-        type: Object
-    }
-  },
   // Component Data
   data() {
       return {
-          // Nav Array,
+          // App data
+          dataStore: dataStore,
+          // Nav items,
           navItems: [
               {
                   id: 0,
@@ -104,19 +102,18 @@ export default {
       } else {
 
           // Hide modal if item is disabled
-          this.data.modal.active = false
+          dataStore.modal.active = false
       }
 
     },
     // Modal controller
     modalController() {
-        var comp = this
         // Reset modal
-        this.data.modal.active = false
+        dataStore.modal.active = false
         // Set timeout for activation
         setTimeout(function(){
             // Set modal.active to true
-            comp.data.modal.active = true
+            dataStore.modal.active = true
         }, 150);
     }
   },
@@ -124,7 +121,7 @@ export default {
   computed: {
     // Return current step
     current_step() {
-      return this.data.current_step;
+      return dataStore.ecard.current_step;
     }
   },
   // Watch for changes
@@ -132,12 +129,12 @@ export default {
     // whenever current_step changes
     current_step() {
         // Go to navItem
-        this.navigationController(this.data.current_step)
+        this.navigationController(dataStore.ecard.current_step)
     }
   },
   // Component is Mounted
   mounted() {
-      // Send local progress data back to parent/App
+      // Send all Steps back to parent
       this.$emit('steps', this.navItems)
   },
 }
