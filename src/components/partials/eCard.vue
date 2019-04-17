@@ -1,5 +1,5 @@
 <template lang="pug">
-#ecard.preview.preview-data
+#ecard.preview.preview-data(v-bind:style="'border-color:' + data.ecard.options.ecard_color[1]")
     .ecard-graphic(data-qt="Edit design")
         a(@click.prevent="goToStep(0)" href="#design")
             img#ecard-image.preview-data(v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design" width="auto" height="auto")

@@ -13,7 +13,7 @@ const dataStore = {
         current_step: null,
         options: {
             ecard_design: 'CNY2019-BANNER-1.jpg',
-            ecard_color: null,
+            ecard_color: ['#cccccc', '#c5c5c5'],
             ecard_from_email: null,
             ecard_from_name: null,
             ecard_greeting: 'Your greeting',
