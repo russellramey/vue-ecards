@@ -6,6 +6,13 @@
             <h4><span>{{data.current_step.meta.desc}}</span></h4>
         </div>
 
+        <div id="modal-content">
+            <transition name="fade">
+                <design-options :data="data" v-if="this.data.current_step.slug === 'design'" />
+                <color-options :data="data" v-if="this.data.current_step.slug === 'color'" />
+            </transition>
+        </div>
+
         <modal-nav :data="data" />
 
     </div>
@@ -14,13 +21,17 @@
 <script>
 // Imports
 import ModalNav from './partials/Modal-Nav.vue'
+import DesignOptions from './partials/Options-Design.vue'
+import ColorOptions from './partials/Options-Color.vue'
 
 // Export Component
 export default {
   name: 'modal',
   // Child components
   components: {
-      ModalNav
+      ModalNav,
+      DesignOptions,
+      ColorOptions
   },
   // Component properties
   props: {
@@ -100,71 +111,25 @@ export default {
         overflow-x: auto;
         height: 100%;
     }
-}
 
-// Options
-.modal-options{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    clear: both;
-    display: none;
-    margin-bottom: 200px;
-}
-.option {
-    margin-bottom:30px;
-    border: 8px solid #fff;
-    -webkit-transition: 150ms all ease-in-out;
-    -o-transition: 150ms all ease-in-out;
-    transition: 150ms all ease-in-out;
-    cursor: pointer;
-    position: relative;
-    display: block;
-}
-.option a{
-    display: block;
-}
-.modal-options:hover .option{
-    opacity: .7;
-}
-.option:hover,
-.option.active {
-    -webkit-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    transform: scale(1.05);
-    -webkit-box-shadow: 2px 2px 11px 1px rgba(0,0,0,.125);
-    box-shadow: 2px 2px 11px 1px rgba(0,0,0,.125);
-    color: white !important;
-    border-color: #3399cc;
-    opacity: 1 !important;
-    z-index: 1;
-}
-.option.active{
-    border-color: #31b98e;
-}
+    // Options
+    .modal-options{
+        opacity: 0;
+        -webkit-transition: opacity 150ms ease-in-out;
+        transition: opacity 150ms ease-in-out;
+        margin: 0;
+        list-style: none;
 
+        &.active{
+            opacity: 1;
+        }
+    }
 
-/* Options Nav */
-// Next / Continue
-// .modal-options .modal-next{
-//     position: absolute;
-//     top: 32px;
-//     left: 5%;
-// }
-.modal-options .options-nav{
-    position: absolute;
-    bottom:0;
-    left:0;
-    right: 0;
-    padding: 15px 25px 30px 25px;
-    background:#eee;
-    border-top: 1px solid #e4e4e4;
-    opacity: 1;
-    z-index: 2;
-    margin-bottom:0 !important;
-}
-.modal-options .options-nav .options-next{
-    float: right;
-    overflow: hidden;
+    // Fade out on unmount (Vue transition)
+    .fade-enter,
+    .fade-leave-active,
+    .fade-leave-to {
+      opacity: 0;
+    }
 }
 </style>
