@@ -1,15 +1,14 @@
-<template>
-    <div id="sidebar" class="ecard-settings">
-        <div id="intro">
-            <img src="https://assets.sabre.com/common/edl/img/sabre-logo-slab.svg" width="auto" height="auto">
-            <h6>Create and send eCards</h6>
-            <p>Choose a card design, select an accent color and write your message. You’ll have a chance to review the eCard before sending.</p>
-        </div>
+<template lang="pug">
+#sidebar.ecard-settings
+    #intro
+        img(src="https://assets.sabre.com/common/edl/img/sabre-logo-slab.svg" width="auto" height="auto")
+        h6 Create and send eCards
+        p Choose a card design, select an accent color and write your message. You’ll have a chance to review the eCard before sending.
 
-        <main-nav :data="data" @steps="getAllSteps" @current-step="getCurrentStep" />
+    main-nav(:data="data" @steps="getAllSteps" @current-step="getCurrentStep")
 
-        <a id="action-new" href="#new" onclick="location.reload();"><i class="edl-icon edl-icon--refresh"></i> Start Over</a>
-    </div>
+    a#action-new(href="#new" onclick="location.reload();")
+        i.edl-icon.edl-icon--refresh Start Over
 </template>
 
 <script>
@@ -42,55 +41,49 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-#sidebar {
-    width: 300px;
-    height: 100%;
-    float: left;
-    background: #fff;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom:0;
-    z-index: 2;
+<style scoped lang="sass">
+#sidebar
+    width: 300px
+    height: 100%
+    float: left
+    background: #fff
+    position: fixed
+    left: 0
+    top: 0
+    bottom: 0
+    z-index: 2
 
-    .sidebar-overlay {
-        position: absolute;
-        top: 0;
-        background: rgba(0,0,0,0.2);
-        left: 0;
-        height: 100%;
-        width: 100%;
-    }
+    .sidebar-overlay
+        position: absolute
+        top: 0
+        background: rgba(0,0,0,0.2)
+        left: 0
+        height: 100%
+        width: 100%
 
-    .button {
-        margin-right: 10px;
-        background: #31b98e;
-        border: 0px solid #229A77;
-        border-bottom: 3px solid #229A77;
+    .button
+        margin-right: 10px
+        background: #31b98e
+        border: 0px solid #229A77
+        border-bottom: 3px solid #229A77
 
-        &.disabled {
-            background: #eeeeee;
-            border-color: #ccc;
-        }
-    }
+        &.disabled
+            background: #eeeeee
+            border-color: #ccc
 
     // Intro paragraph
-    #intro{
-        padding: 20px;
-        font-size: 14px;
+    #intro
+        padding: 20px
+        font-size: 14px
 
-        img{
-            max-width: 160px;
-            margin-left: -20px;
-            margin-top: -20px;
-            margin-bottom:20px;
-        }
-    }
+        img
+            max-width: 160px
+            margin-left: -20px
+            margin-top: -20px
+            margin-bottom: 20px
 
     // Start over button
-    #action-new {
-        padding: 0 20px;
-    }
-}
+    #action-new
+        padding: 0 20px
+
 </style>

@@ -1,9 +1,8 @@
-<template>
-    <div id="app">
-        <sidebar :data="ecard" />
-        <preview :data="ecard" />
-        <modal :data="ecard" />
-    </div>
+<template lang="pug">
+#app
+    sidebar(:data="ecard")
+    preview(:data="ecard")
+    modal(:data="ecard")
 </template>
 
 <script>
@@ -45,7 +44,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-
-</style>

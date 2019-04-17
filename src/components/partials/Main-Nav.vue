@@ -1,13 +1,11 @@
-<template>
-    <ul id="nav" class="ecard-nav">
-        <li v-for="item in navItems" :key="item.status.step">
-            <a @click.prevent="navigationController(item)" :id="item.slug + '-link'" :class="{active: item.status.active, completed: item.status.complete, disabled: item.status.disabled }" class="nav-link" :href="'#' + item.slug" :data-qt="item.desc">
-                <i :class="'edl-icon ' + item.meta.icon"></i>
-                {{item.meta.name}}
-            </a>
-        </li>
-    </ul>
+<template lang="pug">
+#nav.ecard-nav
+    li(v-for="item in navItems" v-bind:key="item.status.step")
+        a.nav-link(@click.prevent="navigationController(item)" v-bind:id="item.slug + '-link'" v-bind:class="{active: item.status.active, completed: item.status.complete, disabled: item.status.disabled }" v-bind:href="'#' + item.slug" v-bind:data-qt="item.desc")
+            i(v-bind:class="'edl-icon ' + item.meta.icon")
+            span {{item.meta.name}}
 </template>
+
 
 <script>
 // Export Component
@@ -145,63 +143,57 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-#nav {
-    list-style: none;
-    margin: 0;
-    margin-bottom: 30px;
-    position: relative;
-    z-index: 1;
+
+<style scoped lang="sass">
+#nav
+    list-style: none
+    margin: 0
+    margin-bottom: 30px
+    position: relative
+    z-index: 1
 
     // Navigation / Step Links
-    .nav-link {
-        display: block;
-        color: #555;
-        border-top: 1px solid #e4e4e4;
-        padding: 20px;
-        border-bottom: 1px solid #e4e4e4;
-        margin-top: -1px;
-        position: relative;
+    .nav-link
+        display: block
+        color: #555
+        border-top: 1px solid #e4e4e4
+        padding: 20px
+        border-bottom: 1px solid #e4e4e4
+        margin-top: -1px
+        position: relative
 
         &:hover,
-        &.active {
-            background: #eee;
-            color: #333;
-            border-right: none;
-        }
-        &.active{
-            border-left:4px solid #e50000;
-        }
+        &.active
+            background: #eee
+            color: #333
+            border-right: none
+
+        &.active
+            border-left: 4px solid #e50000
 
         // Disabled Step
-        &.disabled{
-            pointer-events: none;
-            color: #ccc;
+        &.disabled
+            pointer-events: none
+            color: #ccc
 
-            &:before{
-                display: none !important;
-            }
-        }
+            &:before
+                display: none !important
 
         // Completed Step
-        &.completed{
-            color: #31b98e;
-            border-left-color: #31b98e;
+        &.completed
+            color: #31b98e
+            border-left-color: #31b98e
 
-            &:before{
-                content: "\f178";
-                font-family: "spark-icon-line" !important;
-                color: #31b98e;
-                position: absolute;
-                right: 20px;
-                font-size: 24px;
-            }
-        }
+            &:before
+                content: "\f178"
+                font-family: "spark-icon-line" !important
+                color: #31b98e
+                position: absolute
+                right: 20px
+                font-size: 24px
 
         // Icons
-        .edl-icon {
-            margin-right: 10px;
-        }
-    }
-}
+        .edl-icon
+            margin-right: 10px
+
 </style>
