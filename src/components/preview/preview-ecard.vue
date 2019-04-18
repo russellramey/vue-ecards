@@ -1,15 +1,21 @@
 <template lang="pug">
 #ecard.preview.preview-data(v-bind:style="'border-color:' + data.ecard.options.ecard_color[1]")
-    .ecard-graphic(data-qt="Edit design")
-        a(@click.prevent="goToStep(0)" href="#design")
+    .ecard-graphic.data-container
+        a(href="#design")
             img#ecard-image.preview-data(v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design" width="auto" height="auto")
+            .data-mask(@click="goToStep(0)" data-qt="Edit design")
+
     .ecard-content
-        h1.ecard-title(data-qt="Edit greeting")
-            span(@click.prevent="goToStep(2)") {{ data.ecard.options.ecard_greeting }}
-        p.ecard-name(data-qt="Edit name")
-            span(@click.prevent="goToStep(2)") {{ data.ecard.options.ecard_to[0].name }}
-        p.ecard-message(data-qt="Edit message")
-            span(@click.prevent="goToStep(2)") {{ data.ecard.options.ecard_message }}
+        h1.ecard-title.data-container
+            span {{ data.ecard.options.ecard_greeting }}
+            span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit greeting")
+        p.ecard-name.data-container
+            span {{ data.ecard.options.ecard_to[0].name }}
+            span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit name")
+        p.ecard-message.data-container
+            span {{ data.ecard.options.ecard_message }}
+            span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit message")
+
     .ecard-meta
         p.ecard-author
             span.label Sent by:
@@ -77,6 +83,9 @@ export default {
             cursor: pointer
             display: block
 
+        .ecard-name
+            display: inline-block
+
         h1
             margin: 0
             text-align: center
@@ -84,4 +93,13 @@ export default {
             font-size: 36px
             font-weight: normal
 
+    .data-container
+        position: relative
+
+        .data-mask
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
 </style>
