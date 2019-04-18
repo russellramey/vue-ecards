@@ -4,7 +4,8 @@ ul#modal-color
         a.option.option-color
             label.input-radio(:for="option.name")
                 input.data-input(v-model="data.options.ecard_color" v-bind:id="option.name" v-bind:value="[option.color, option.shadow]" type="radio" name="data-color")
-                span.color-palette-block(:id="'color-' + option.name") {{option.name}}
+            span.color-palette-block(:id="'color-' + option.name" v-bind:style="'background:' + option.color") {{option.name}}
+                span(v-bind:style="'background:' + option.shadow")
 </template>
 
 <script>
@@ -23,18 +24,22 @@ export default {
       return {
           // Available Design Options
           options: [
-              { color: '#e50000', shadow: '#ac0000', name: 'red', active: true },
+              { color: '#e50000', shadow: '#ac0000', name: 'red', active: false },
+              { color: '#3399cc', shadow: '#2787b7', name: 'blue', active: false },
+              { color: '#31b98e', shadow: '#26a77e', name: 'green', active: false },
+              { color: '#e5e53e', shadow: '#d9d93b', name: 'yellow', active: false },
+              { color: '#222222', shadow: '#111111', name: 'black', active: false },
+              { color: '#cccccc', shadow: '#c5c5c5', name: 'grey', active: false },
           ]
       }
-  },
-  // Component Mounted
-  mounted() {
   }
 }
 </script>
 
 <style lang="sass">
 #modal-color
+    list-style: none
+    margin: 0
 
     // Options
     .option
@@ -65,4 +70,34 @@ export default {
         &.active
             border-color: #31b98e
 
+        // Color block
+        .color-palette-block
+            padding: 25px
+            width: 100%
+            border-left: 45px solid
+            color: transparent
+            text-transform: uppercase
+            display: block
+            cursor: pointer
+
+            span
+                position: absolute
+                left: 0
+                top: 0
+                width: 10%
+                height: 100%
+
+        // Input
+        .input-radio
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            display: block
+            cursor: pointer
+
+            input[type="radio"]
+                visibility: hidden
+                display: none
 </style>

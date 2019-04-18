@@ -31,7 +31,7 @@ export default {
   },
   // On Component mount
   mounted(){
-      mixins.methods.tooltip()
+      //mixins.methods.tooltip()
   }
 }
 </script>

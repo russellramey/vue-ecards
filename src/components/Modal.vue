@@ -100,7 +100,7 @@ export default {
     #modal-content
         padding: 40px 5%
         padding-top: 15px
-        padding-bottom: 140px
+        padding-bottom: 150px
         overflow-x: auto
         height: 100%
 

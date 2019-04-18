@@ -1,20 +1,20 @@
 <template lang="pug">
 #preview.ecard-preview(v-bind:style="'background:' + dataStore.ecard.options.ecard_color[0]")
     span#view-preview(@click.prevent="goToStep(1)")
-    ecard(:data="dataStore")
+    eCard(v-bind:data="dataStore")
 </template>
 
 <script>
 // Imports
 import dataStore from '../stores/dataStore.js'
-import ecard from './preview/preview-ecard.vue'
+import eCard from './preview/preview-ecard.vue'
 
 // Export Component
 export default {
   name: 'preview',
   // Child components
   components: {
-      ecard
+      eCard
   },
   // Component data
   data(){

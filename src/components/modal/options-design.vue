@@ -4,8 +4,8 @@ ul#modal-design
         a.option.option-design
             label.input-radio(:for="option.image")
                 input(v-model="data.options.ecard_design" v-bind:id="option.image" v-bind:value="option.image" type="radio" name="data-design")
-                img(v-bind:src="'https://assets.sabre.com/images/ecards/' + option.image" width="auto" height="auto")
-                img(src="images/graphic_text_placeholder.png" width="auto" height="auto")
+            img(v-bind:src="'https://assets.sabre.com/images/ecards/' + option.image" width="auto" height="auto")
+            img(src="../../assets/graphic_text_placeholder.png" width="auto" height="auto")
 </template>
 
 <script>
@@ -38,6 +38,8 @@ export default {
 
 <style lang="sass">
 #modal-design
+    list-style: none
+    margin: 0
 
     // Options
     .option
@@ -68,4 +70,18 @@ export default {
         &.active
             border-color: #31b98e
 
+
+        // Input
+        .input-radio
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            display: block
+            cursor: pointer
+
+            input[type="radio"]
+                visibility: hidden
+                display: none
 </style>

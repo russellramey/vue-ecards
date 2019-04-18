@@ -50,8 +50,8 @@ export default {
       }
   },
   // On Component Mount
-  mounted() {
-      mixins.methods.tooltip()
+  created() {
+      //mixins.methods.tooltip()
   }
 }
 </script>
