@@ -1,0 +1,99 @@
+<template lang="pug">
+li.recipient-group
+    .row.row-nm
+        .col-sm-6
+            label(for="ecard_to_name") Name #[span *]
+            input(v-model="data.options.ecard_to[index].name" type="text" name="ecard_to_name[]" id="ecard_to_name")
+
+        .col-sm-6
+            label(for="ecard_to_email") Email #[span *]
+            input(v-model="data.options.ecard_to[index].email" type="text" name="ecard_to_email[]" id="ecard_to_email")
+
+    .recipient-action
+        a.recipient-add(data-qt="Add another" @click="addRecipient(index)")
+            i.edl-icon.edl-icon--math-add
+        a.recipient-remove(v-if="index >= 1" data-qt="Remove this" @click="deleteRecipient(index)")
+            i.edl-icon.edl-icon--close
+</template>
+
+
+<script>
+// Export Component
+export default {
+  name: 'recipient',
+  // Component properties
+  props: {
+      // Data from parent/App
+      data: {
+          type: Object
+      },
+      index: Number
+  },
+  // Component functions
+  methods: {
+      // Add
+      addRecipient(index){
+          // Create new user/recipient group
+          var newUser = {
+              name: null, email: null
+          }
+          // Add new user to ecard obj
+          this.data.options.ecard_to.splice(index + 1, 0, newUser)
+      },
+      // Remove
+      deleteRecipient(index){
+          // Add new user to ecard obj
+          this.data.options.ecard_to.splice(index, 1)
+      }
+  }
+}
+</script>
+
+
+<style lang="sass">
+.recipient-group
+    position: relative
+    margin-bottom: 20px
+    transition: all 150ms ease-in-out
+    padding-right: 60px
+
+    .recipient-action
+        position: absolute
+        right: -20px
+        top: 50%
+        width: 70px
+        margin-top: -5px
+
+        .recipient-add,
+        .recipient-remove
+            cursor: pointer
+            display: inline-block
+            border-radius: 50%
+            width: 30px
+            height: 30px
+            background: #fff
+            text-align: center
+            padding: 3px
+            color: #999
+            float: left
+            margin-right: 5px
+
+            &:hover
+                color: #ffffff
+                background: #31B98E
+
+        .recipient-remove
+            background: transparent
+            visibility: hidden
+
+            &:hover
+                color: #ffffff
+                background: #ac0000
+
+        // Recipient-action Hover
+        &:hover
+
+            .recipient-remove
+                visibility: visible
+
+</style>

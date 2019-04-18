@@ -10,7 +10,7 @@ ul#modal-color
 <script>
 // Export Component
 export default {
-  name: 'color-options',
+  name: 'color',
   // Component properties
   props: {
       // Data from parent/App

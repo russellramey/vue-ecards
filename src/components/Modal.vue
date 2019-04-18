@@ -8,6 +8,7 @@
     #modal-content
         design-options(:data="dataStore.ecard" v-if="dataStore.ecard.current_step.slug === 'design'")
         color-options(:data="dataStore.ecard" v-if="dataStore.ecard.current_step.slug === 'color'")
+        message-options(:data="dataStore.ecard" v-if="dataStore.ecard.current_step.slug === 'message'")
 
     modal-nav(:data="dataStore.ecard")
 </template>
@@ -18,6 +19,7 @@ import dataStore from '../stores/dataStore.js'
 import ModalNav from './modal/modal-nav.vue'
 import DesignOptions from './modal/options-design.vue'
 import ColorOptions from './modal/options-color.vue'
+import MessageOptions from './modal/options-message.vue'
 
 // Export Component
 export default {
@@ -26,7 +28,8 @@ export default {
   components: {
       ModalNav,
       DesignOptions,
-      ColorOptions
+      ColorOptions,
+      MessageOptions
   },
   // Component data
   data(){
@@ -97,6 +100,7 @@ export default {
     #modal-content
         padding: 40px 5%
         padding-top: 15px
+        padding-bottom: 140px
         overflow-x: auto
         height: 100%
 

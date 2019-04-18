@@ -1,0 +1,74 @@
+<template lang="pug">
+ul#modal-message
+    li.row
+        .col-sm-6
+            label(for="ecard_from_name") Your Name #[span *]
+            input(v-model="data.options.ecard_from.name" type="text" name="ecard_from_name" id="ecard_from_name")
+
+        .col-sm-6
+            label(for="ecard_from_email") Your Email #[span *]
+            input(v-model="data.options.ecard_from.email" type="email" name="ecard_from_email" id="ecard_from_email")
+
+    li.row
+        .col-sm-12
+            label(for="ecard_greeting") Greeting #[span *]
+            input(v-model="data.options.ecard_greeting" type="text" name="ecard_greeting" id="ecard_greeting")
+
+    li.row
+        .col-sm-12
+            label(for="ecard_message") Your Message #[span *]
+            textarea(v-model="data.options.ecard_message" type="text" name="ecard_message" id="ecard_message")
+
+    li.row
+        .col-sm-12
+            h4 Recipients
+            p.notice Each recipient added below will receive a personalized version of the eCard shown in the preview. You can upload multiple recipients at once using the "Import CSV" button below. Make sure to verify that all email addresses are spelled correctly.
+            ul#recipients
+                Recipients(v-for="(user, index) in data.options.ecard_to" v-bind:key="index" v-bind:data="data" v-bind:index="index")
+</template>
+
+
+<script>
+// Imports
+import Recipients from '../partials/message-recipients.vue'
+
+// Export Component
+export default {
+  name: 'message',
+  // Child components
+  components: {
+      Recipients
+  },
+  // Component properties
+  props: {
+      // Data from parent/App
+      data: {
+          type: Object
+      }
+  },
+}
+</script>
+
+
+<style lang="sass">
+#modal-message
+    list-style: none
+    margin: 0
+
+    ul
+        list-style: none
+        margin: 0
+
+    span
+        color: #e50000
+
+    textarea
+        line-height: 1.4em
+        min-height: 200px
+
+    .notice
+        font-size: .85rem
+        color: #999
+        font-style: italic
+        line-height: 1.2em
+</style>

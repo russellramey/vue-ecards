@@ -11,7 +11,7 @@ ul#modal-design
 <script>
 // Export Component
 export default {
-  name: 'design-options',
+  name: 'design',
   // Component properties
   props: {
       // Data from parent/App
