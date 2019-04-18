@@ -18,6 +18,9 @@ li.recipient-group
 
 
 <script>
+// Imports
+import mixins from '../../mixins/global.js'
+
 // Export Component
 export default {
   name: 'recipient',
@@ -45,6 +48,10 @@ export default {
           // Add new user to ecard obj
           this.data.options.ecard_to.splice(index, 1)
       }
+  },
+  // On Component Mount
+  mounted() {
+      mixins.methods.tooltip()
   }
 }
 </script>
@@ -95,5 +102,4 @@ export default {
 
             .recipient-remove
                 visibility: visible
-
 </style>

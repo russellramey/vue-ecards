@@ -3,20 +3,20 @@
     .ecard-graphic(data-qt="Edit design")
         a(@click.prevent="goToStep(0)" href="#design")
             img#ecard-image.preview-data(v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design" width="auto" height="auto")
-        .ecard-content
-            h1.ecard-title
-                span(@click.prevent="goToStep(2)" data-qt="Edit greeting") {{ data.ecard.options.ecard_greeting }}
-            p.ecard-name
-                span(@click.prevent="goToStep(2)" data-qt="Edit name") {{ data.ecard.options.ecard_to[0].name }}
-            p.ecard-message
-                span(@click.prevent="goToStep(2)" data-qt="Edit message") {{ data.ecard.options.ecard_message }}
-        .ecard-meta
-            p.ecard-author
-                span.label Sent by:
-                span.author {{ data.ecard.options.ecard_from.name }}
-                span.date Date here
-            p.ecard-logo
-                img(src="https://assets.sabre.com/common/edl/img/sabre-logo-red.svg" width="auto" height="auto")
+    .ecard-content
+        h1.ecard-title
+            span(@click.prevent="goToStep(2)" data-qt="Edit greeting") {{ data.ecard.options.ecard_greeting }}
+        p.ecard-name
+            span(@click.prevent="goToStep(2)" data-qt="Edit name") {{ data.ecard.options.ecard_to[0].name }}
+        p.ecard-message
+            span(@click.prevent="goToStep(2)" data-qt="Edit message") {{ data.ecard.options.ecard_message }}
+    .ecard-meta
+        p.ecard-author
+            span.label Sent by:
+            span.author {{ data.ecard.options.ecard_from.name }}
+            span.date Date here
+        p.ecard-logo
+            img(src="https://assets.sabre.com/common/edl/img/sabre-logo-red.svg" width="auto" height="auto")
 </template>
 
 <script>

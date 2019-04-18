@@ -1,7 +1,7 @@
 <template lang="pug">
 #nav.ecard-nav
     li(v-for="item in navItems" v-bind:key="item.status.step")
-        a.nav-link(@click.prevent="navigationController(item)" v-bind:id="item.slug + '-link'" v-bind:class="{active: item.status.active, completed: item.status.complete, disabled: item.status.disabled }" v-bind:href="'#' + item.slug" v-bind:data-qt="item.desc")
+        a.nav-link(@click.prevent="navigationController(item)" v-bind:id="item.slug + '-link'" v-bind:class="{active: item.status.active, completed: item.status.complete, disabled: item.status.disabled }" v-bind:href="'#' + item.slug" v-bind:data-qt="item.meta.desc")
             i(v-bind:class="'edl-icon ' + item.meta.icon")
             span {{item.meta.name}}
 </template>
@@ -141,7 +141,7 @@ export default {
 </script>
 
 
-<style scoped lang="sass">
+<style lang="sass">
 #nav
     list-style: none
     margin: 0
