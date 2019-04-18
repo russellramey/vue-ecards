@@ -14,7 +14,7 @@
 <script>
 // Imports
 import dataStore from '../stores/dataStore.js'
-import MainNav from './partials/Main-Nav.vue'
+import MainNav from './sidebar/sidebar-nav.vue'
 
 // Export Component
 export default {

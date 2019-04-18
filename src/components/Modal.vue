@@ -15,9 +15,9 @@
 <script>
 // Imports
 import dataStore from '../stores/dataStore.js'
-import ModalNav from './partials/Modal-Nav.vue'
-import DesignOptions from './partials/Options-Design.vue'
-import ColorOptions from './partials/Options-Color.vue'
+import ModalNav from './modal/modal-nav.vue'
+import DesignOptions from './modal/options-design.vue'
+import ColorOptions from './modal/options-color.vue'
 
 // Export Component
 export default {
