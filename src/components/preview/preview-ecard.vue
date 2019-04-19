@@ -2,18 +2,22 @@
 #ecard.preview.preview-data(v-bind:style="'border-color:' + data.ecard.options.ecard_color.shadow")
     .ecard-graphic.data-container
         a(href="#design")
-            img#ecard-image.preview-data(v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design.image" width="auto" height="auto")
+            img#ecard-image.preview-data(v-if="data.ecard.options.ecard_design.image" v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design.image" width="auto" height="auto")
+            img#ecard-image.preview-data(v-else src="https://assets.sabre.com/images/ecards/CNY2019-BANNER-1.jpg" width="auto" height="auto")
             .data-mask(@click="goToStep(0)" data-qt="Edit design")
 
     .ecard-content
         h1.ecard-title.data-container
-            span {{ data.ecard.options.ecard_greeting }}
+            span(v-if="data.ecard.options.ecard_greeting") {{ data.ecard.options.ecard_greeting }}
+            span(v-else) Your Greeting
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit greeting")
         p.ecard-name.data-container
-            span {{ data.ecard.options.ecard_to[0].name }}
+            span(v-if="data.ecard.options.ecard_to[0].name") {{ data.ecard.options.ecard_to[0].name }}
+            span(v-else) To Name
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit name")
         p.ecard-message.data-container
-            span {{ data.ecard.options.ecard_message }}
+            span(v-if="data.ecard.options.ecard_message") {{ data.ecard.options.ecard_message }}
+            span(v-else) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in egestas justo. Aliquam diam nibh, pharetra nec mattis eu, tempor at lacus. Vivamus ac lorem lacus. Mauris augue mi, feugiat in est eget, iaculis tempus nibh. Aliquam tristique, neque sed pellentesque fermentum, massa risus tincidunt ipsum, sed tempor magna sem at nisl.
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit message")
 
     .ecard-meta
