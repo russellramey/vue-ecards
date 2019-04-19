@@ -29,9 +29,6 @@ export default {
               { category: 'chinese new year', image: 'CNY2019-BANNER-3.jpg', active: false }
           ]
       }
-  },
-  // Component Mounted
-  mounted() {
   }
 }
 </script>
