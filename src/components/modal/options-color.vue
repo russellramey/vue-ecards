@@ -1,14 +1,18 @@
 <template lang="pug">
-ul#modal-color
+ul#modal-color.modal-options
     li(v-for="(option, index) in options" v-bind:key="index")
-        a.option.option-color
+        a.option.option-color(@click="currentSelection(index)" v-bind:class="{active: option.active}")
             label.input-radio(:for="option.name")
-                input.data-input(v-model="data.options.ecard_color" v-bind:id="option.name" v-bind:value="[option.color, option.shadow]" type="radio" name="data-color")
-            span.color-palette-block(:id="'color-' + option.name" v-bind:style="'background:' + option.color") {{option.name}}
+                input.data-input(v-model="data.options.ecard_color.background" v-bind:id="option.name" v-bind:value="option.background" type="radio" name="data-color")
+            span.color-palette-block(:id="'color-' + option.name" v-bind:style="'background:' + option.background") {{option.name}}
                 span(v-bind:style="'background:' + option.shadow")
 </template>
 
+
 <script>
+// Imports
+import dataOptions from '../../stores/dataOptions.js'
+
 // Export Component
 export default {
   name: 'color',
@@ -22,19 +26,34 @@ export default {
   // Component Data
   data() {
       return {
-          // Available Design Options
-          options: [
-              { color: '#e50000', shadow: '#ac0000', name: 'red', active: false },
-              { color: '#3399cc', shadow: '#2787b7', name: 'blue', active: false },
-              { color: '#31b98e', shadow: '#26a77e', name: 'green', active: false },
-              { color: '#e5e53e', shadow: '#d9d93b', name: 'yellow', active: false },
-              { color: '#222222', shadow: '#111111', name: 'black', active: false },
-              { color: '#cccccc', shadow: '#c5c5c5', name: 'grey', active: false },
-          ]
+          // Available Color Options
+          options: dataOptions.colors
+      }
+  },
+  // Component functions
+  methods: {
+      // Get current selection, assign to App Data
+      currentSelection(index) {
+          // Reset options state
+          for (var option of this.options){
+              option.active = false
+          }
+
+          // Reassign new selection
+          this.options[index].active = true
+          this.data.options.ecard_color = this.options[index]
+
+          // Validate Step
+          this.validateStep()
+      },
+      // Validate user action in Nav
+      validateStep() {
+          this.data.current_step.status.complete = true
       }
   }
 }
 </script>
+
 
 <style lang="sass">
 #modal-color

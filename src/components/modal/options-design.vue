@@ -1,14 +1,18 @@
 <template lang="pug">
-ul#modal-design
+ul#modal-design.modal-options
     li(v-for="(option, index) in options" v-bind:key="index")
-        a.option.option-design
+        a.option.option-design(@click="currentSelection(index)" v-bind:class="{active: option.active}")
             label.input-radio(:for="option.image")
-                input(v-model="data.options.ecard_design" v-bind:id="option.image" v-bind:value="option.image" type="radio" name="data-design")
+                input(v-model="data.options.ecard_design.image" v-bind:id="option.image" v-bind:value="option.image" type="radio" name="data-design")
             img(v-bind:src="'https://assets.sabre.com/images/ecards/' + option.image" width="auto" height="auto")
             img(src="../../assets/graphic_text_placeholder.png" width="auto" height="auto")
 </template>
 
+
 <script>
+// Imports
+import dataOptions from '../../stores/dataOptions.js'
+
 // Export Component
 export default {
   name: 'design',
@@ -23,15 +27,33 @@ export default {
   data() {
       return {
           // Available Design Options
-          options: [
-              { category: 'chinese new year', image: 'CNY2019-BANNER-1.jpg', active: false },
-              { category: 'chinese new year', image: 'CNY2019-BANNER-2.jpg', active: false },
-              { category: 'chinese new year', image: 'CNY2019-BANNER-3.jpg', active: false }
-          ]
+          options: dataOptions.designs
+      }
+  },
+  // Component functions
+  methods: {
+      // Get current selection, assign to App Data
+      currentSelection(index) {
+          // Reset options state
+          for (var option of this.options){
+              option.active = false
+          }
+
+          // Reassign new selection
+          this.options[index].active = true
+          this.data.options.ecard_design = this.options[index]
+
+          // Validate Step
+          this.validateStep()
+      },
+      // Validate user action in Nav
+      validateStep() {
+          this.data.current_step.status.complete = true
       }
   }
 }
 </script>
+
 
 <style lang="sass">
 #modal-design

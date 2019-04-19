@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style scoped lang="sass">
+<style lang="sass">
 #modal
     background: #eee
     position: fixed
@@ -104,21 +104,17 @@ export default {
         overflow-x: auto
         height: 100%
 
-    // Options
-    .modal-options
-        opacity: 0
-        -webkit-transition: opacity 150ms ease-in-out
-        transition: opacity 150ms ease-in-out
-        margin: 0
-        list-style: none
+        // Options
+        .modal-options
 
-        &.active
-            opacity: 1
+            li
+                transition: all 150ms ease-in-out
 
-    // Fade out on unmount (Vue transition)
-    .fade-enter,
-    .fade-leave-active,
-    .fade-leave-to
-      opacity: 0
+            &:hover
 
+                li
+                    opacity: .75
+
+                    &:hover
+                        opacity: 1
 </style>

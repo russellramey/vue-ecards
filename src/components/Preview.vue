@@ -1,5 +1,5 @@
 <template lang="pug">
-#preview.ecard-preview(v-bind:style="'background:' + dataStore.ecard.options.ecard_color[0]")
+#preview.ecard-preview(v-bind:style="'background:' + dataStore.ecard.options.ecard_color.background")
     span#view-preview(@click.prevent="goToStep(1)")
     eCard(v-bind:data="dataStore")
 </template>

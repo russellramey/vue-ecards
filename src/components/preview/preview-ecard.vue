@@ -1,8 +1,8 @@
 <template lang="pug">
-#ecard.preview.preview-data(v-bind:style="'border-color:' + data.ecard.options.ecard_color[1]")
+#ecard.preview.preview-data(v-bind:style="'border-color:' + data.ecard.options.ecard_color.shadow")
     .ecard-graphic.data-container
         a(href="#design")
-            img#ecard-image.preview-data(v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design" width="auto" height="auto")
+            img#ecard-image.preview-data(v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design.image" width="auto" height="auto")
             .data-mask(@click="goToStep(0)" data-qt="Edit design")
 
     .ecard-content
@@ -25,6 +25,7 @@
             img(src="https://assets.sabre.com/common/edl/img/sabre-logo-red.svg" width="auto" height="auto")
 </template>
 
+
 <script>
 // Export Component
 export default {
@@ -45,6 +46,7 @@ export default {
   }
 }
 </script>
+
 
 <style lang="sass">
 #ecard
