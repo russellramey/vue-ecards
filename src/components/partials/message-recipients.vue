@@ -3,16 +3,16 @@ li.recipient-group
     .row.row-nm
         .col-sm-6
             label(for="ecard_to_name") Name #[span *]
-            input(v-model="data.options.ecard_to[index].name" type="text" name="ecard_to_name[]" id="ecard_to_name")
+            input(v-model="data.options.ecard_message.to[index].name" type="text" name="ecard_to_name[]" id="ecard_to_name")
 
         .col-sm-6
             label(for="ecard_to_email") Email #[span *]
-            input(v-model="data.options.ecard_to[index].email" type="text" name="ecard_to_email[]" id="ecard_to_email")
+            input(v-model="data.options.ecard_message.to[index].email" type="text" name="ecard_to_email[]" id="ecard_to_email")
 
     .recipient-action
         a.recipient-add(data-qt="Add another" @click="addRecipient(index)")
             i.edl-icon.edl-icon--math-add
-        a.recipient-remove(v-if="index >= 1" data-qt="Remove this" @click="deleteRecipient(index)")
+        a.recipient-remove(v-if="index >= 1" data-qt="Remove" @click="deleteRecipient(index)")
             i.edl-icon.edl-icon--close
 </template>
 
@@ -37,16 +37,16 @@ export default {
       // Add
       addRecipient(index){
           // Create new user/recipient group
-          var newUser = {
+          var recipient = {
               name: null, email: null
           }
           // Add new user to ecard obj
-          this.data.options.ecard_to.splice(index + 1, 0, newUser)
+          this.data.options.ecard_message.to.splice(index + 1, 0, recipient)
       },
       // Remove
       deleteRecipient(index){
           // Add new user to ecard obj
-          this.data.options.ecard_to.splice(index, 1)
+          this.data.options.ecard_message.to.splice(index, 1)
       }
   },
   // On Component Mount

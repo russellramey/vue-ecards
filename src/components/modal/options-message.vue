@@ -3,28 +3,28 @@ ul#modal-message
     li.row
         .col-sm-6
             label(for="ecard_from_name") Your Name #[span *]
-            input(v-model="data.options.ecard_from.name" type="text" name="ecard_from_name" id="ecard_from_name")
+            input(v-model="data.options.ecard_message.from.name" type="text" name="ecard_from_name" id="ecard_from_name")
 
         .col-sm-6
             label(for="ecard_from_email") Your Email #[span *]
-            input(v-model="data.options.ecard_from.email" type="email" name="ecard_from_email" id="ecard_from_email")
+            input(v-model="data.options.ecard_message.from.email" type="email" name="ecard_from_email" id="ecard_from_email")
 
     li.row
         .col-sm-12
             label(for="ecard_greeting") Greeting #[span *]
-            input(v-model="data.options.ecard_greeting" type="text" name="ecard_greeting" id="ecard_greeting")
+            input(v-model="data.options.ecard_message.greeting" type="text" name="ecard_greeting" id="ecard_greeting")
 
     li.row
         .col-sm-12
             label(for="ecard_message") Your Message #[span *]
-            textarea(v-model="data.options.ecard_message" type="text" name="ecard_message" id="ecard_message")
+            textarea(v-model="data.options.ecard_message.comments" type="text" name="ecard_message" id="ecard_message")
 
     li.row
         .col-sm-12
             h4 Recipients
-            p.notice Each recipient added below will receive a personalized version of the eCard shown in the preview. You can upload multiple recipients at once using the "Import CSV" button below. Make sure to verify that all email addresses are spelled correctly.
+            p.notice Each recipient added below will receive a personalized version of the eCard shown in the preview. You can upload multiple recipients at once using the "Import CSV" button below. Make sure to verify that all email addresses are spelled correctly.
             ul#recipients
-                Recipients(v-for="(user, index) in data.options.ecard_to" v-bind:key="index" v-bind:data="data" v-bind:index="index")
+                Recipients(v-for="(user, index) in data.options.ecard_message.to" v-bind:key="index" v-bind:data="data" v-bind:index="index")
 </template>
 
 
@@ -46,6 +46,13 @@ export default {
           type: Object
       }
   },
+  // Component functions
+  methods: {
+      // Validate user action in Nav
+      validateStep(){
+
+      }
+  }
 }
 </script>
 
@@ -61,6 +68,9 @@ export default {
 
     span
         color: #e50000
+
+        &.qt-tooltip
+            color: #ffffff
 
     textarea
         line-height: 1.4em

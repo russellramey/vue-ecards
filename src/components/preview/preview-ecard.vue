@@ -8,22 +8,22 @@
 
     .ecard-content
         h1.ecard-title.data-container
-            span(v-if="data.ecard.options.ecard_greeting") {{ data.ecard.options.ecard_greeting }}
+            span(v-if="data.ecard.options.ecard_message.greeting") {{ data.ecard.options.ecard_greeting }}
             span(v-else) Your Greeting
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit greeting")
         p.ecard-name.data-container
-            span(v-if="data.ecard.options.ecard_to[0].name") {{ data.ecard.options.ecard_to[0].name }}
+            span(v-if="data.ecard.options.ecard_message.to[0].name") {{ data.ecard.options.ecard_message.to[0].name }}
             span(v-else) To Name
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit name")
         p.ecard-message.data-container
-            span(v-if="data.ecard.options.ecard_message") {{ data.ecard.options.ecard_message }}
+            span(v-if="data.ecard.options.ecard_message.comments") {{ data.ecard.options.ecard_message.comments }}
             span(v-else) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in egestas justo. Aliquam diam nibh, pharetra nec mattis eu, tempor at lacus. Vivamus ac lorem lacus. Mauris augue mi, feugiat in est eget, iaculis tempus nibh. Aliquam tristique, neque sed pellentesque fermentum, massa risus tincidunt ipsum, sed tempor magna sem at nisl.
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit message")
 
     .ecard-meta
         p.ecard-author
             span.label Sent by:
-            span.author {{ data.ecard.options.ecard_from.name }}
+            span.author {{ data.ecard.options.ecard_message.from.name }}
             span.date Date here
         p.ecard-logo
             img(src="https://assets.sabre.com/common/edl/img/sabre-logo-red.svg" width="auto" height="auto")

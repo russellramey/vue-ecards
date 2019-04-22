@@ -14,15 +14,17 @@ const dataStore = {
         options: {
             ecard_color: {},
             ecard_design: {},
-            ecard_greeting: null,
-            ecard_message: null,
-            ecard_from: {
-                name: null,
-                email: null
+            ecard_message: {
+                greeting: null,
+                comments: null,
+                from: {
+                    name: null,
+                    email: null
+                },
+                to: [
+                    { name: null, email: null }
+                ]
             },
-            ecard_to: [
-                { name: null, email: null }
-            ]
         }
     }
 }
