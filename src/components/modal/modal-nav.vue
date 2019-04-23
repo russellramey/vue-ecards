@@ -1,7 +1,8 @@
 <template lang="pug">
 #modal-nav
     button.button.button-secondary.off-lt(@click.prevent="goToStep('prev')" v-if="this.data.current_step.id >= 1") Back
-    button.button.off-rt(@click.prevent="goToStep('next')") Next
+    button.button.off-rt(@click.prevent="goToStep('next')" v-if="this.data.current_step.id < 2") Next
+    button.button.off-rt(@click.prevent="goToStep('next')" v-else v-bind:class="{disabled: this.data.steps[3].status.disabled}") Done &amp; Review
 </template>
 
 <script>

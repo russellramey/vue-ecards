@@ -10,6 +10,7 @@
 <script>
 // Imports
 import dataStore from '../../stores/dataStore.js'
+import mixins from '../../mixins/global.js'
 
 // Export Component
 export default {
@@ -121,15 +122,28 @@ export default {
   computed: {
     // Return current step
     current_step() {
-      return dataStore.ecard.current_step;
+      return dataStore.ecard.current_step
+    },
+    // Retun Steps data
+    current_step_status() {
+        if (dataStore.ecard.current_step){
+            return dataStore.ecard.current_step.status.complete
+        } else {
+            return null
+        }
     }
   },
   // Watch for changes
   watch: {
-    // whenever current_step changes
+    // whenever Current_Step oj changes
     current_step() {
         // Go to navItem
         this.navigationController(dataStore.ecard.current_step)
+    },
+    // whenver Steps obj changes
+    current_step_status() {
+        // Check master validation
+        mixins.methods.validationController(dataStore)
     }
   },
   // Component is Mounted

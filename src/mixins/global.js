@@ -68,6 +68,35 @@ const global = {
                 uid += possible.charAt(Math.floor(Math.random() * possible.length));
             }
             return uid;
+        },
+        // eCard Validation
+        validationController: function(data) {
+
+            // Set correct data vars
+            var steps = data.ecard.steps;
+
+            // Set to complete
+            var complete = true;
+
+            // Loop thru each step
+            for(var index in steps){
+
+                // If is not Review Step
+                if (index < steps.length - 1){
+                    if (!steps[index].status.complete) {
+                        complete = false;
+                    }
+                }
+
+            }
+
+            // Check all steps are complete
+            if (complete){
+                data.ecard.steps[steps.length - 1].status.disabled = false;
+            } else {
+                data.ecard.steps[steps.length - 1].status.disabled = true;
+            }
+
         }
     }
 };
