@@ -3,21 +3,21 @@ ul#modal-message
     li.row
         .col-sm-6
             label(for="ecard_from_name") Your Name #[span *]
-            input(v-model="data.options.ecard_message.from.name" type="text" name="ecard_from_name" id="ecard_from_name")
+            input(v-model="data.options.ecard_message.from[0].name" type="text" name="ecard_from_name" id="ecard_from_name" @keyup="validateStep()")
 
         .col-sm-6
             label(for="ecard_from_email") Your Email #[span *]
-            input(v-model="data.options.ecard_message.from.email" type="email" name="ecard_from_email" id="ecard_from_email")
+            input(v-model="data.options.ecard_message.from[0].email" type="email" name="ecard_from_email" id="ecard_from_email" @keyup="validateStep()")
 
     li.row
         .col-sm-12
             label(for="ecard_greeting") Greeting #[span *]
-            input(v-model="data.options.ecard_message.greeting" type="text" name="ecard_greeting" id="ecard_greeting")
+            input(v-model="data.options.ecard_message.greeting" type="text" name="ecard_greeting" id="ecard_greeting" @keyup="validateStep()")
 
     li.row
         .col-sm-12
             label(for="ecard_message") Your Message #[span *]
-            textarea(v-model="data.options.ecard_message.comments" type="text" name="ecard_message" id="ecard_message")
+            textarea(v-model="data.options.ecard_message.comments" type="text" name="ecard_message" id="ecard_message" @keyup="validateStep()")
 
     li.row
         .col-sm-12
@@ -50,7 +50,52 @@ export default {
   methods: {
       // Validate user action in Nav
       validateStep(){
+          // Get message object
+          var ecard_message = this.data.options.ecard_message
+          // Valid true by defualt
+          var valid = true;
 
+          // Loop thru all values
+          for (var value in ecard_message){
+
+              // If value is array
+              if (typeof ecard_message[value] != 'string' && ecard_message[value] != null){
+
+                  // For each item in array
+                  for (var item in ecard_message[value]){
+
+                      // Loop thru each value of each item in array
+                      for (var v in ecard_message[value][item]){
+
+                          // If value is null or blank
+                          if (ecard_message[value][item][v] === null || ecard_message[value][item][v] === ''){
+
+                              // Reject validation
+                              valid = false
+                          }
+                      }
+                  }
+
+              }
+              // Else if value is string
+              else {
+
+                  // If value is null or blank
+                  if (ecard_message[value] === null || ecard_message[value] === ''){
+
+                      // Reject validation
+                      valid = false
+                  }
+
+              }
+          }
+
+          // Check validation, set step validation accordinly
+          if (valid){
+              this.data.current_step.status.complete = true
+          } else {
+              this.data.current_step.status.complete = false
+          }
       }
   }
 }

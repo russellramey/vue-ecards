@@ -17,10 +17,9 @@ const dataStore = {
             ecard_message: {
                 greeting: null,
                 comments: null,
-                from: {
-                    name: null,
-                    email: null
-                },
+                from: [
+                    { name: null, email: null}
+                ],
                 to: [
                     { name: null, email: null }
                 ]

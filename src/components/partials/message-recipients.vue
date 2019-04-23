@@ -3,11 +3,11 @@ li.recipient-group
     .row.row-nm
         .col-sm-6
             label(for="ecard_to_name") Name #[span *]
-            input(v-model="data.options.ecard_message.to[index].name" type="text" name="ecard_to_name[]" id="ecard_to_name")
+            input(v-model="data.options.ecard_message.to[index].name" type="text" name="ecard_to_name[]" id="ecard_to_name" @keyup="this.$parent.validateStep")
 
         .col-sm-6
             label(for="ecard_to_email") Email #[span *]
-            input(v-model="data.options.ecard_message.to[index].email" type="text" name="ecard_to_email[]" id="ecard_to_email")
+            input(v-model="data.options.ecard_message.to[index].email" type="text" name="ecard_to_email[]" id="ecard_to_email" @keyup="this.$parent.validateStep")
 
     .recipient-action
         a.recipient-add(data-qt="Add another" @click="addRecipient(index)")
@@ -47,11 +47,18 @@ export default {
       deleteRecipient(index){
           // Add new user to ecard obj
           this.data.options.ecard_message.to.splice(index, 1)
+
+          // Run validation, from parent
+          this.$parent.validateStep()
       }
   },
   // On Component Mount
   mounted() {
+      // Initialize tooltips
       mixins.methods.tooltip()
+
+      // Run validation, from parent
+      this.$parent.validateStep()
   }
 }
 </script>
