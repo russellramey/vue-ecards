@@ -1,5 +1,5 @@
 <template lang="pug">
-ul#modal-message
+ul#modal-message.modal-options(v-bind:class="{active: active}")
     li.row
         .col-sm-6
             label(for="ecard_from_name") Your Name #[span *]
@@ -44,6 +44,13 @@ export default {
       // Data from parent/App
       data: {
           type: Object
+      }
+  },
+  // Component data
+  data() {
+      return {
+          // Is active
+          active: false
       }
   },
   // Component functions
@@ -97,6 +104,16 @@ export default {
               this.data.current_step.status.complete = false
           }
       }
+  },
+  // Component Mounted
+  mounted() {
+      var comp = this
+
+      // Set timeout for activation
+      setTimeout(function(){
+          // Set modal.active to true
+          comp.active = true
+      }, 300);
   }
 }
 </script>

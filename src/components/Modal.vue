@@ -106,6 +106,12 @@ export default {
 
         // Options
         .modal-options
+            opacity: 0
+            -webkit-transition: opacity 150ms ease-in-out
+            transition: opacity 150ms ease-in-out
+
+            &.active
+                opacity: 1
 
             li
                 transition: all 150ms ease-in-out

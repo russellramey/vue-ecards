@@ -1,5 +1,5 @@
 <template lang="pug">
-ul#modal-color.modal-options
+ul#modal-color.modal-options(v-bind:class="{active: active}")
     li(v-for="(option, index) in options" v-bind:key="index")
         a.option.option-color(@click="currentSelection(index)" v-bind:class="{active: option.active}")
             label.input-radio(:for="option.name")
@@ -27,7 +27,9 @@ export default {
   data() {
       return {
           // Available Color Options
-          options: dataOptions.colors
+          options: dataOptions.colors,
+          // Is active
+          active: false
       }
   },
   // Component functions
@@ -50,6 +52,16 @@ export default {
       validateStep() {
           this.data.current_step.status.complete = true
       }
+  },
+  // Component Mounted
+  mounted() {
+      var comp = this
+
+      // Set timeout for activation
+      setTimeout(function(){
+          // Set modal.active to true
+          comp.active = true
+      }, 300);
   }
 }
 </script>

@@ -1,6 +1,12 @@
 <template lang="pug">
-ul#modal-design.modal-options
-    li(v-for="(option, index) in options" v-bind:key="index")
+ul#modal-design.modal-options(v-bind:class="{active: active}")
+    li
+        p.edl-select
+            select#cateogry(@change="filterDesigns()")
+                option(disabled selected) Filter designs by...
+                option test
+
+    li(v-for="(option, index) in options" v-bind:key="index" v-bind:data-category="option.category")
         a.option.option-design(@click="currentSelection(index)" v-bind:class="{active: option.active}")
             label.input-radio(:for="option.image")
                 input(v-model="data.options.ecard_design.image" v-bind:id="option.image" v-bind:value="option.image" type="radio" name="data-design")
@@ -27,7 +33,9 @@ export default {
   data() {
       return {
           // Available Design Options
-          options: dataOptions.designs
+          options: dataOptions.designs,
+          // Is active
+          active: false
       }
   },
   // Component functions
@@ -49,7 +57,21 @@ export default {
       // Validate user action in Nav
       validateStep() {
           this.data.current_step.status.complete = true
+      },
+      // Category Filter
+      filterDesigns() {
+          console.log('changed')
       }
+  },
+  // Component Mounted
+  mounted() {
+      var comp = this
+
+      // Set timeout for activation
+      setTimeout(function(){
+          // Set modal.active to true
+          comp.active = true
+      }, 300);
   }
 }
 </script>
