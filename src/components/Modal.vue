@@ -9,6 +9,7 @@
         design-options(:data="dataStore.ecard" v-if="dataStore.ecard.current_step.slug === 'design'")
         color-options(:data="dataStore.ecard" v-if="dataStore.ecard.current_step.slug === 'color'")
         message-options(:data="dataStore.ecard" v-if="dataStore.ecard.current_step.slug === 'message'")
+        review-options(:data="dataStore.ecard" v-if="dataStore.ecard.current_step.slug === 'review'")
 
     modal-nav(:data="dataStore.ecard")
 </template>
@@ -20,6 +21,7 @@ import ModalNav from './modal/modal-nav.vue'
 import DesignOptions from './modal/options-design.vue'
 import ColorOptions from './modal/options-color.vue'
 import MessageOptions from './modal/options-message.vue'
+import ReviewOptions from './modal/options-review.vue'
 
 // Export Component
 export default {
@@ -29,7 +31,8 @@ export default {
       ModalNav,
       DesignOptions,
       ColorOptions,
-      MessageOptions
+      MessageOptions,
+      ReviewOptions
   },
   // Component data
   data(){
