@@ -1,10 +1,9 @@
 <template lang="pug">
 #ecard.preview.preview-data(v-bind:style="'border-color:' + data.ecard.options.ecard_color.shadow")
     .ecard-graphic.data-container
-        a(href="#design")
-            img#ecard-image.preview-data(v-if="data.ecard.options.ecard_design.image" v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design.image" width="auto" height="auto")
-            img#ecard-image.preview-data(v-else src="https://assets.sabre.com/images/ecards/CNY2019-BANNER-1.jpg" width="auto" height="auto")
-            .data-mask(@click="goToStep(0)" data-qt="Edit design")
+        img#ecard-image.preview-data(v-if="data.ecard.options.ecard_design.image" v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design.image" width="auto" height="auto")
+        img#ecard-image.preview-data(v-else src="https://assets.sabre.com/images/ecards/CNY2019-BANNER-1.jpg" width="auto" height="auto")
+        .data-mask(@click="goToStep(0)" data-qt="Edit design")
 
     .ecard-content
         h1.ecard-title.data-container
@@ -17,13 +16,15 @@
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit name")
         p.ecard-message.data-container
             span(v-if="data.ecard.options.ecard_message.comments") {{ data.ecard.options.ecard_message.comments }}
-            span(v-else) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla in egestas justo. Aliquam diam nibh, pharetra nec mattis eu, tempor at lacus. Vivamus ac lorem lacus. Mauris augue mi, feugiat in est eget, iaculis tempus nibh. Aliquam tristique, neque sed pellentesque fermentum, massa risus tincidunt ipsum, sed tempor magna sem at nisl.
+            span(v-else) Your message will show here, consectetur adipiscing elit. Nulla in egestas justo. Aliquam diam nibh, pharetra nec mattis eu, tempor at lacus. Vivamus ac lorem lacus. Mauris augue mi, feugiat in est eget, iaculis tempus nibh. Aliquam tristique, neque sed pellentesque fermentum, massa risus tincidunt ipsum, sed tempor magna sem at nisl.
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit message")
 
     .ecard-meta
         p.ecard-author
             span.label Sent by:
-            span.author {{ data.ecard.options.ecard_message.from.name }}
+            span.author(v-if="data.ecard.options.ecard_message.from[0].name") {{ data.ecard.options.ecard_message.from[0].name }}
+            span.author(v-else) Name
+            br
             span.date Date here
         p.ecard-logo
             img(src="https://assets.sabre.com/common/edl/img/sabre-logo-red.svg" width="auto" height="auto")
@@ -74,6 +75,13 @@ export default {
             display: block
             float: right
 
+        .ecard-author
+            span
+                display: inline-block
+
+            .author
+                margin-left: 8px
+
         p
             float: left
             width: 50%
@@ -108,4 +116,5 @@ export default {
             left: 0
             width: 100%
             height: 100%
+            cursor: pointer
 </style>

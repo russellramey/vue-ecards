@@ -4,7 +4,7 @@ ul#modal-design.modal-options(v-bind:class="{active: active}")
         p.edl-select
             select#cateogry(@change="filterDesigns()")
                 option(disabled selected) Filter designs by...
-                option test
+                option(v-for="(category, index) in filterOptions" v-bind:value="category") {{category}}
 
     li(v-for="(option, index) in options" v-bind:key="index" v-bind:data-category="option.category")
         a.option.option-design(@click="currentSelection(index)" v-bind:class="{active: option.active}")
@@ -35,7 +35,9 @@ export default {
           // Available Design Options
           options: dataOptions.designs,
           // Is active
-          active: false
+          active: false,
+          // Categories
+          filterOptions: null
       }
   },
   // Component functions
@@ -61,6 +63,24 @@ export default {
       // Category Filter
       filterDesigns() {
           console.log('changed')
+      },
+      // Create Category Filter Options
+      filterDesignOptions() {
+          // Empty category array
+          let categories = []
+
+          // For each option in available options
+          for (var option in this.options) {
+
+              // If current category is not in the Category array, add it
+              if (!categories.includes(this.options[option].category)){
+                  categories.push(this.options[option].category)
+              }
+
+          }
+
+          // Add data to component
+          this.filterOptions = categories
       }
   },
   // Component Mounted
@@ -71,7 +91,10 @@ export default {
       setTimeout(function(){
           // Set modal.active to true
           comp.active = true
-      }, 300);
+      }, 300)
+
+      // Generate fileter categories
+      this.filterDesignOptions()
   }
 }
 </script>
@@ -81,6 +104,11 @@ export default {
 #modal-design
     list-style: none
     margin: 0
+
+    // Filter
+    select
+        option
+            text-transform: capitalize
 
     // Options
     .option

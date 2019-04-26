@@ -1,10 +1,11 @@
 const options = {
-    // User info
+    // Design Options
     designs: [
         { category: 'chinese new year', image: 'CNY2019-BANNER-1.jpg'},
         { category: 'chinese new year', image: 'CNY2019-BANNER-2.jpg'},
         { category: 'chinese new year', image: 'CNY2019-BANNER-3.jpg'}
     ],
+    // Color Options
     colors:[
         { background: '#e50000', shadow: '#ac0000', name: 'red'},
         { background: '#3399cc', shadow: '#2787b7', name: 'blue'},
