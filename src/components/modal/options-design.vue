@@ -2,11 +2,12 @@
 ul#modal-design.modal-options(v-bind:class="{active: active}")
     li
         p.edl-select
-            select#cateogry(@change="filterDesigns()")
-                option(disabled selected) Filter designs by...
-                option(v-for="(category, index) in filterOptions" v-bind:value="category") {{category}}
+            select#cateogry(v-model="currentCategory")
+                option(disabled selected value="all") Filter designs by...
+                option(value="all") Show All
+                option(v-for="(category, index) in categoryOptions" v-bind:value="category") {{category}}
 
-    li(v-for="(option, index) in options" v-bind:key="index" v-bind:data-category="option.category")
+    li(v-for="(option, index) in options" v-bind:key="index" v-bind:data-category="option.category" v-if="option.category === currentCategory || currentCategory === 'all'")
         a.option.option-design(@click="currentSelection(index)" v-bind:class="{active: option.active}")
             label.input-radio(:for="option.image")
                 input(v-model="data.options.ecard_design.image" v-bind:id="option.image" v-bind:value="option.image" type="radio" name="data-design")
@@ -34,10 +35,12 @@ export default {
       return {
           // Available Design Options
           options: dataOptions.designs,
+          // Available Design Categories
+          categoryOptions: null,
+          // Current Design Category
+          currentCategory: 'all',
           // Is active
-          active: false,
-          // Categories
-          filterOptions: null
+          active: false
       }
   },
   // Component functions
@@ -60,10 +63,6 @@ export default {
       validateStep() {
           this.data.current_step.status.complete = true
       },
-      // Category Filter
-      filterDesigns() {
-          console.log('changed')
-      },
       // Create Category Filter Options
       filterDesignOptions() {
           // Empty category array
@@ -80,7 +79,7 @@ export default {
           }
 
           // Add data to component
-          this.filterOptions = categories
+          this.categoryOptions = categories
       }
   },
   // Component Mounted

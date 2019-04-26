@@ -17,7 +17,8 @@ ul#modal-message.modal-options(v-bind:class="{active: active}")
     li.row
         .col-sm-12
             label(for="ecard_message") Your Message #[span *]
-            textarea(v-model="data.options.ecard_message.comments" type="text" name="ecard_message" id="ecard_message" @keyup="validateStep()")
+            span.char-limit #[b.char-count {{charCount}}] characters remaining
+            textarea(v-model="data.options.ecard_message.comments" type="text" name="ecard_message" id="ecard_message" @keyup="validateStep(); characterLimit(data.options.ecard_message.comments);")
 
     li.row
         .col-sm-12
@@ -50,7 +51,9 @@ export default {
   data() {
       return {
           // Is active
-          active: false
+          active: false,
+          // Character limit
+          charCount: 500
       }
   },
   // Component functions
@@ -103,6 +106,10 @@ export default {
           } else {
               this.data.current_step.status.complete = false
           }
+      },
+      // Monitor character limit
+      characterLimit(value) {
+          this.charCount = 500 - value.length
       }
   },
   // Component Mounted
@@ -133,6 +140,11 @@ export default {
 
         &.qt-tooltip
             color: #ffffff
+
+        &.char-limit
+            float: right
+            color: #999 !important
+            font-size: 13px
 
     textarea
         line-height: 1.4em
