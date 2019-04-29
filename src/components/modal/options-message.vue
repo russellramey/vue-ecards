@@ -17,8 +17,8 @@ ul#modal-message.modal-options(v-bind:class="{active: active}")
     li.row
         .col-sm-12
             label(for="ecard_message") Your Message #[span *]
-            span.char-limit #[b.char-count {{charCount}}] characters remaining
-            textarea(v-model="data.options.ecard_message.comments" type="text" name="ecard_message" id="ecard_message" @keyup="validateStep(); characterLimit(data.options.ecard_message.comments);")
+            character-count(@charCountValid="characterCount" v-bind:data="data")
+            textarea(v-model="data.options.ecard_message.comments" type="text" name="ecard_message" id="ecard_message" @keyup="validateStep()")
 
     li.row
         .col-sm-12
@@ -32,13 +32,15 @@ ul#modal-message.modal-options(v-bind:class="{active: active}")
 <script>
 // Imports
 import Recipients from '../partials/message-recipients.vue'
+import CharacterCount from '../partials/message-charactercount.vue'
 
 // Export Component
 export default {
   name: 'message',
   // Child components
   components: {
-      Recipients
+      Recipients,
+      CharacterCount
   },
   // Component properties
   props: {
@@ -52,8 +54,8 @@ export default {
       return {
           // Is active
           active: false,
-          // Character limit
-          charCount: 500
+          // Character Limit Error
+          charCountError: false
       }
   },
   // Component functions
@@ -100,16 +102,17 @@ export default {
               }
           }
 
-          // Check validation, set step validation accordinly
-          if (valid){
+          // Check validation, set step validation accordingly
+          // Check character count validation
+          if (valid && !this.charCountError){
               this.data.current_step.status.complete = true
           } else {
               this.data.current_step.status.complete = false
           }
       },
-      // Monitor character limit
-      characterLimit(value) {
-          this.charCount = 500 - value.length
+      // Monitor character count/limit
+      characterCount(status) {
+          this.charCountError = status
       }
   },
   // Component Mounted
