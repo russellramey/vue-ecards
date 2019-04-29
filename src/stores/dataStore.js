@@ -10,6 +10,7 @@ const dataStore = {
     },
     ecard:{
         steps:{},
+        complete: false,
         current_step: null,
         options: {
             ecard_color: {},

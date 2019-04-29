@@ -2,7 +2,8 @@
 #modal-nav
     button.button.button-secondary.off-lt(@click.prevent="goToStep('prev')" v-if="this.data.current_step.id >= 1") Back
     button.button.off-rt(@click.prevent="goToStep('next')" v-if="this.data.current_step.id < 2") Next
-    button.button.off-rt(@click.prevent="goToStep('next')" v-else v-bind:class="{disabled: this.data.steps[3].status.disabled}") Done &amp; Review
+    button.button.off-rt(@click.prevent="goToStep('next')" v-if="this.data.current_step.id === 2" v-bind:class="{disabled: this.data.steps[3].status.disabled}") Done &amp; Review
+    button.button.off-rt(@click.prevent="ecardSubmitSend()" v-if="this.data.current_step.id === 3") Submit &amp; Send
 </template>
 
 <script>
@@ -29,6 +30,9 @@ export default {
             this.data.current_step = this.data.steps[current + 1]
         }
     },
+    ecardSubmitSend() {
+        console.log(this.data.options)
+    }
   }
 }
 </script>

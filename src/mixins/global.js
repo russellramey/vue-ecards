@@ -83,6 +83,8 @@ const global = {
 
                 // If is not Review Step
                 if (index < steps.length - 1){
+
+                    // If any step is incomplete
                     if (!steps[index].status.complete) {
                         complete = false;
                     }
