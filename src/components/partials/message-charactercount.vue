@@ -4,9 +4,6 @@ span#char-limit(v-bind:class="{error: this.charCountError}") #[b.char-count {{ch
 
 
 <script>
-// Imports
-import mixins from '../../mixins/global.js'
-
 // Export Component
 export default {
   name: 'character-count',

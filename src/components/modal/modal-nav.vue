@@ -31,7 +31,27 @@ export default {
         }
     },
     ecardSubmitSend() {
-        console.log(this.data.options)
+        // Get Axios plugin
+        const axios = require('axios');
+        // Make Axios(HTTP) request
+        axios.post('./inc/submit.php', JSON.stringify(this.data.options))
+          .then(function (response) {
+
+            console.log(response.data)
+            //alert('Submit to blah and show blah and etc.')
+
+            // Set form to complete
+            //$this.data.complete = true
+
+            // Route to View to see results
+            //$this.$router.push({ name: 'View', params: {uid: $this.data.values.uid, formData: $this.data, formSubmit: $this.data.complete }})
+
+            // Scroll to top
+            //window.scrollTo(0, 0);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
   }
 }
