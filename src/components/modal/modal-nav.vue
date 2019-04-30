@@ -3,7 +3,9 @@
     button.button.button-secondary.off-lt(@click.prevent="goToStep('prev')" v-if="this.data.current_step.id >= 1") Back
     button.button.off-rt(@click.prevent="goToStep('next')" v-if="this.data.current_step.id < 2") Next
     button.button.off-rt(@click.prevent="goToStep('next')" v-if="this.data.current_step.id === 2" v-bind:class="{disabled: this.data.steps[3].status.disabled}") Done &amp; Review
-    button.button.off-rt(@click.prevent="ecardSubmitSend()" v-if="this.data.current_step.id === 3") Submit &amp; Send
+    button.button.off-rt(@click.prevent="ecardSubmitSend()" v-if="this.data.current_step.id === 3")
+        span(v-if="loading") Sending...
+        span(v-else) Submit &amp; Send
 </template>
 
 <script>
@@ -14,6 +16,13 @@ export default {
   props: {
       data: {
           type: Object
+      }
+  },
+  // Component data
+  data() {
+      return {
+          // Wating on server
+          loading: false
       }
   },
   // Component Functions
@@ -31,26 +40,42 @@ export default {
         }
     },
     ecardSubmitSend() {
+        // Component
+        let $this = this
+
+        // Change server status
+        this.loading = true
+
         // Get Axios plugin
         const axios = require('axios');
+
         // Make Axios(HTTP) request
-        axios.post('./inc/submit.php', JSON.stringify(this.data.options))
+        axios.post('http://ecards:8888/inc/submit.php', JSON.stringify(this.data.options))
           .then(function (response) {
 
-            console.log(response.data)
-            //alert('Submit to blah and show blah and etc.')
+            // If response is an 'error'
+            if (response.data.indexOf('error') > -1){
+                // Change server status, back to false
+                $this.loading = false
+                alert('Whoops! Looks like there was an error. Please make sure all input fields are filled out width a valid format and try again.\n\n'
+                        + '\t• Check that you have selected a card design.\n'
+                        + '\t• check that you have selected a card accent color\n'
+                        + '\t• Check all input fields in the "Message" tab have been completed.\n'
+                        + "\t• Make sure all email addresses are in a valid email format."
+                )
+            } else {
+                console.log(response.data)
+                alert('Success, send data to backend')
+            }
 
             // Set form to complete
             //$this.data.complete = true
-
-            // Route to View to see results
-            //$this.$router.push({ name: 'View', params: {uid: $this.data.values.uid, formData: $this.data, formSubmit: $this.data.complete }})
 
             // Scroll to top
             //window.scrollTo(0, 0);
           })
           .catch(function (error) {
-            console.log(error);
+            alert(error)
           });
     }
   }

@@ -7,8 +7,7 @@
 
     main-nav(@steps="getAllSteps" @current-step="getCurrentStep")
 
-    a#action-new(href="#new" onclick="location.reload();")
-        i.edl-icon.edl-icon--refresh Start Over
+    a#action-new(href="#new" onclick="location.reload();") Reset
 </template>
 
 <script>
@@ -52,24 +51,6 @@ export default {
     top: 0
     bottom: 0
     z-index: 2
-
-    .sidebar-overlay
-        position: absolute
-        top: 0
-        background: rgba(0,0,0,0.2)
-        left: 0
-        height: 100%
-        width: 100%
-
-    .button
-        margin-right: 10px
-        background: #31b98e
-        border: 0px solid #229A77
-        border-bottom: 3px solid #229A77
-
-        &.disabled
-            background: #eeeeee
-            border-color: #ccc
 
     // Intro paragraph
     #intro

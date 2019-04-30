@@ -3,11 +3,11 @@ li.recipient-group
     .row.row-nm
         .col-sm-6
             label(for="ecard_to_name") Name #[span *]
-            input(v-model="data.options.ecard_message.to[index].name" type="text" name="ecard_to_name[]" id="ecard_to_name" @keyup="this.$parent.validateStep")
+            input(v-model="data.options.ecard_message.to[index].name" type="text" name="ecard_to_name[]" v-bind:id="'ecard_to_name-' + index" @keyup="this.$parent.validateStep")
 
         .col-sm-6
             label(for="ecard_to_email") Email #[span *]
-            input(v-model="data.options.ecard_message.to[index].email" type="text" name="ecard_to_email[]" id="ecard_to_email" @keyup="this.$parent.validateStep")
+            input(v-model="data.options.ecard_message.to[index].email" type="text" name="ecard_to_email[]" v-bind:id="'ecard_to_email-' + index" @keyup="this.$parent.validateStep")
 
     .recipient-action
         a.recipient-add(data-qt="Add another" @click="addRecipient(index)")
