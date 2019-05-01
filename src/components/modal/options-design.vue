@@ -4,10 +4,10 @@ ul#modal-design.modal-options(v-bind:class="{active: active}")
         p.edl-select
             select#cateogry(v-model="currentCategory")
                 option(disabled selected value="all") Filter designs by...
-                option(value="all") Show All
-                option(v-for="(category, index) in categoryOptions" v-bind:value="category") {{category}}
+                option(value="all") SHOW ALL
+                option(v-for="(category, index) in categoryOptions" v-bind:value="category.toLowerCase()") {{ category }}
 
-    li(v-for="(option, index) in options" v-bind:key="index" v-bind:data-category="option.category" v-if="option.category === currentCategory || currentCategory === 'all'")
+    li(v-for="(option, index) in options" v-bind:key="index" v-if="option.category.toLowerCase() === currentCategory || currentCategory === 'all'")
         a.option.option-design(@click="currentSelection(index)" v-bind:class="{active: option.active}")
             label.input-radio(:for="option.image")
                 input(v-model="data.options.ecard_design.image" v-bind:id="option.image" v-bind:value="option.image" type="radio" name="data-design")
@@ -71,9 +71,12 @@ export default {
           // For each option in available options
           for (var option in this.options) {
 
+              // Save category as var, and make it all uppercase
+              let category = this.options[option].category.toUpperCase()
+
               // If current category is not in the Category array, add it
-              if (!categories.includes(this.options[option].category)){
-                  categories.push(this.options[option].category)
+              if (!categories.includes(category)){
+                  categories.push(category)
               }
 
           }
@@ -103,11 +106,6 @@ export default {
 #modal-design
     list-style: none
     margin: 0
-
-    // Filter
-    select
-        option
-            text-transform: capitalize
 
     // Options
     .option
