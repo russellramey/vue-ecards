@@ -4,6 +4,8 @@
         a.nav-link(@click.prevent="navigationController(item)" v-bind:id="item.slug + '-link'" v-bind:class="{active: item.status.active, completed: item.status.complete, disabled: item.status.disabled }" v-bind:href="'#' + item.slug" v-bind:data-qt="item.meta.desc")
             i(v-bind:class="'edl-icon ' + item.meta.icon")
             span {{item.meta.name}}
+
+    a#action-new(href="#new" onclick="location.reload();") Reset
 </template>
 
 
@@ -207,4 +209,10 @@ export default {
         .edl-icon
             margin-right: 10px
 
+
+    // Start over button
+    #action-new
+        display: inline-block
+        margin: 20px 0
+        padding: 0 20px
 </style>

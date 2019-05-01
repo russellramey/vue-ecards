@@ -1,16 +1,16 @@
 const dataStore = {
-    // User info
-    user: {
-        name: 'default',
-        email: 'default@sabre.com'
-    },
+    // Modal
     modal:{
         content: null,
         active: false
     },
+    // Ecard
     ecard:{
         steps:{},
-        complete: false,
+        status: {
+            complete: false,
+            recipients: null
+        },
         current_step: null,
         options: {
             ecard_color: {},

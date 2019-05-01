@@ -2,7 +2,7 @@
 #app
     sidebar
     preview
-    modal
+    modal(v-if="!dataStore.ecard.status.complete")
 </template>
 
 <script>

@@ -1,7 +1,10 @@
 <template lang="pug">
-#preview.ecard-preview(v-bind:style="'background:' + dataStore.ecard.options.ecard_color.background")
-    span#view-preview(@click.prevent="goToStep(1)")
-    eCard(v-bind:data="dataStore")
+#preview.ecard-preview
+    #view-preview(@click.prevent="goToStep(1)" v-bind:style="'background:' + dataStore.ecard.options.ecard_color.background" v-if="!dataStore.ecard.status.complete")
+        eCard(v-bind:data="dataStore")
+
+    #view-confirm(v-else)
+        span SUCCESS CONTENT WILL GO HERE
 </template>
 
 <script>
@@ -43,16 +46,6 @@ export default {
     left: 300px
     background: #ccc
     padding: 30px
-    display: -webkit-box
-    display: -ms-flexbox
-    display: flex
-    -webkit-box-orient: vertical
-    -webkit-box-direction: normal
-    -ms-flex-direction: column
-    flex-direction: column
-    -webkit-box-pack: center
-    -ms-flex-pack: center
-    justify-content: center
 
     #view-preview
         position: absolute
@@ -61,5 +54,15 @@ export default {
         width: 100%
         height: 100%
         cursor: pointer
+        display: -webkit-box
+        display: -ms-flexbox
+        display: flex
+        -webkit-box-orient: vertical
+        -webkit-box-direction: normal
+        -ms-flex-direction: column
+        flex-direction: column
+        -webkit-box-pack: center
+        -ms-flex-pack: center
+        justify-content: center
 
 </style>

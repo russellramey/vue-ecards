@@ -64,12 +64,18 @@ export default {
                         + "\t• Make sure all email addresses are in a valid email format."
                 )
             } else {
+
+                // Debug
                 console.log(response.data)
                 alert('Success, send data to backend')
+
+                // Set form to complete
+                $this.data.status.complete = true
+                // Save response to data
+                $this.data.status.recipients = response.data
             }
 
-            // Set form to complete
-            //$this.data.complete = true
+
 
             // Scroll to top
             //window.scrollTo(0, 0);

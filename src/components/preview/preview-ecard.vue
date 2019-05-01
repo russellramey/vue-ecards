@@ -7,7 +7,7 @@
 
     .ecard-content
         h1.ecard-title.data-container
-            span(v-if="data.ecard.options.ecard_message.greeting") {{ data.ecard.options.ecard_greeting }}
+            span(v-if="data.ecard.options.ecard_message.greeting") {{ data.ecard.options.ecard_message.greeting }}
             span(v-else) Your Greeting
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit greeting")
         p.ecard-name.data-container

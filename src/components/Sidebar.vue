@@ -5,10 +5,10 @@
         h6 Create and send eCards
         p Choose a card design, select an accent color and write your message. You’ll have a chance to review the eCard before sending.
 
-    main-nav(@steps="getAllSteps" @current-step="getCurrentStep")
-
-    a#action-new(href="#new" onclick="location.reload();") Reset
+    main-nav(v-if="!dataStore.ecard.status.complete" @steps="getAllSteps" @current-step="getCurrentStep")
+    button#action-new(v-else onclick="location.reload();" href="#new") Create another eCard
 </template>
+
 
 <script>
 // Imports
@@ -40,6 +40,7 @@ export default {
 }
 </script>
 
+
 <style scoped lang="sass">
 #sidebar
     width: 300px
@@ -63,8 +64,9 @@ export default {
             margin-top: -20px
             margin-bottom: 20px
 
-    // Start over button
-    #action-new
-        padding: 0 20px
 
+    // New ecard
+    #action-new
+        margin: 0 auto
+        display: block
 </style>
