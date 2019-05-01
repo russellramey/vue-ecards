@@ -1,6 +1,7 @@
 <template lang="pug">
 #preview.ecard-preview
-    #view-preview(@click.prevent="goToStep(1)" v-bind:style="'background:' + dataStore.ecard.options.ecard_color.background" v-if="!dataStore.ecard.status.complete")
+    #view-preview(v-if="!dataStore.ecard.status.complete")
+        span(@click.prevent="goToStep(1)" v-bind:style="'background:' + dataStore.ecard.options.ecard_color.background")
         eCard(v-bind:data="dataStore")
 
     #view-confirm(v-else)
@@ -64,5 +65,13 @@ export default {
         -webkit-box-pack: center
         -ms-flex-pack: center
         justify-content: center
+
+        span
+            display: block
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
 
 </style>

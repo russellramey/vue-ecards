@@ -100,4 +100,8 @@ export default {
     opacity: 1
     z-index: 2
     margin-bottom: 0 !important
+
+    button.disabled
+        border: 1px solid #ccc
+        border-bottom: 3px solid #ccc
 </style>
