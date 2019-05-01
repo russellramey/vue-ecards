@@ -5,20 +5,22 @@
         eCard(v-bind:data="dataStore")
 
     #view-confirm(v-else)
-        span SUCCESS CONTENT WILL GO HERE
+        eCard-results(v-bind:data="dataStore")
 </template>
 
 <script>
 // Imports
 import dataStore from '../stores/dataStore.js'
 import eCard from './preview/preview-ecard.vue'
+import eCardResults from './preview/preview-results.vue'
 
 // Export Component
 export default {
   name: 'preview',
   // Child components
   components: {
-      eCard
+      eCard,
+      eCardResults
   },
   // Component data
   data(){
