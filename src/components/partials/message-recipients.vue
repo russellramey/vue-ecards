@@ -12,7 +12,7 @@ li.recipient-group
     .recipient-action
         a.recipient-add(data-qt="Add another" @click="addRecipient(index)")
             i.edl-icon.edl-icon--math-add
-        a.recipient-remove(v-if="index >= 1" data-qt="Remove" @click="deleteRecipient(index)")
+        a.recipient-remove(v-if="data.options.ecard_message.to.length > 1" data-qt="Remove" @click="deleteRecipient(index)")
             i.edl-icon.edl-icon--close
 </template>
 

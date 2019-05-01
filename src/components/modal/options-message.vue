@@ -24,6 +24,7 @@ ul#modal-message.modal-options(v-bind:class="{active: active}")
         .col-sm-12
             h4 Recipients
             p.notice Each recipient added below will receive a personalized version of the eCard shown in the preview. You can upload multiple recipients at once using the "Import CSV" button below. Make sure to verify that all email addresses are spelled correctly.
+            a.clear-recipients(@click="clearAllRecipients" href="#clear" data-qt="Clear all recipients") Clear all
             ul#recipients
                 Recipients(v-for="(user, index) in data.options.ecard_message.to" v-bind:key="index" v-bind:data="data" v-bind:index="index")
 </template>
@@ -113,6 +114,26 @@ export default {
       // Monitor character count/limit
       characterCount(status) {
           this.charCountError = status
+      },
+      // Clear recipient list
+      clearAllRecipients() {
+          // Create a blank/default recipient
+          let defaultRecipient = {
+              name: null,
+              email: null
+          }
+
+          // If current recipeint list is larger than 1
+          if (this.data.options.ecard_message.to.length > 1){
+              // Confirm user actions
+              if (confirm("You are about to remove all current Recipients from the recipient list, this action can not be undone.")){
+                  // Empty current Recipients array
+                  this.data.options.ecard_message.to = []
+                  // Reset Recipeint data to defaultRecipient
+                  this.data.options.ecard_message.to.push(defaultRecipient)
+              }
+          }
+
       }
   },
   // Component Mounted
@@ -158,4 +179,16 @@ export default {
         color: #999
         font-style: italic
         line-height: 1.2em
+
+    .clear-recipients
+        position: absolute
+        top: 3px
+        right: 20px
+        text-transform: uppercase
+        font-size: 12px
+        color: #ac0000
+
+        span
+            color: #fff
+            text-transform: none
 </style>
