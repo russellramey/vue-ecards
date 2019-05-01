@@ -8,7 +8,7 @@
     .ecard-content
         h1.ecard-title.data-container
             span(v-if="data.ecard.options.ecard_message.greeting") {{ data.ecard.options.ecard_message.greeting }}
-            span(v-else) Your Greeting
+            span(v-else v-bind:style="'color:' + data.ecard.options.ecard_color.background") Your Greeting
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit greeting")
         p.ecard-name.data-container
             span(v-if="data.ecard.options.ecard_message.to[0].name") {{ data.ecard.options.ecard_message.to[0].name }}

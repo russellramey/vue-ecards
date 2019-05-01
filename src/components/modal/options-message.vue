@@ -24,7 +24,7 @@ ul#modal-message.modal-options(v-bind:class="{active: active}")
         .col-sm-12
             h4 Recipients
             p.notice Each recipient added below will receive a personalized version of the eCard shown in the preview. You can upload multiple recipients at once using the "Import CSV" button below. Make sure to verify that all email addresses are spelled correctly.
-            a.clear-recipients(@click="clearAllRecipients" href="#clear" data-qt="Clear all recipients") Clear all
+            a.clear-recipients(@click.prevent="clearAllRecipients" href="#clear" data-qt="Clear all recipients") Clear all
             ul#recipients
                 Recipients(v-for="(user, index) in data.options.ecard_message.to" v-bind:key="index" v-bind:data="data" v-bind:index="index")
 </template>

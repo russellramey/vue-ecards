@@ -103,7 +103,6 @@ export default {
     #modal-content
         padding: 40px 5%
         padding-top: 15px
-        padding-bottom: 150px
         overflow-x: auto
         height: 100%
 
@@ -112,6 +111,7 @@ export default {
             opacity: 0
             -webkit-transition: opacity 150ms ease-in-out
             transition: opacity 150ms ease-in-out
+            margin-bottom: 200px
 
             &.active
                 opacity: 1
