@@ -159,6 +159,9 @@ export default {
         list-style: none
         margin: 0
 
+    li
+        opacity: 1 !important
+
     span
         color: #e50000
 
