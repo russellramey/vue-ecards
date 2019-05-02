@@ -5,7 +5,7 @@ ul#modal-design.modal-options(v-bind:class="{active: active}")
             select#cateogry(v-model="currentCategory")
                 option(disabled selected value="all") Filter designs by...
                 option(value="all") SHOW ALL
-                option(v-for="(category, index) in categoryOptions" v-bind:value="category.toLowerCase()") {{ category }}
+                option(v-for="(category, index) in designOptionCategories" v-bind:value="category.toLowerCase()") {{ category }}
 
     li(v-for="(option, index) in options" v-bind:key="index" v-if="option.category.toLowerCase() === currentCategory || currentCategory === 'all'")
         a.option.option-design(@click="currentSelection(index)" v-bind:class="{active: option.active}")
@@ -62,9 +62,12 @@ export default {
       // Validate user action in Nav
       validateStep() {
           this.data.current_step.status.complete = true
-      },
+      }
+  },
+  // Component computed data
+  computed: {
       // Create Category Filter Options
-      filterDesignOptions() {
+      designOptionCategories: function() {
           // Empty category array
           let categories = []
 
@@ -81,8 +84,8 @@ export default {
 
           }
 
-          // Add data to component
-          this.categoryOptions = categories
+          // Return data
+          return categories
       }
   },
   // Component Mounted
@@ -95,8 +98,6 @@ export default {
           comp.active = true
       }, 300)
 
-      // Generate fileter categories
-      this.filterDesignOptions()
   }
 }
 </script>
