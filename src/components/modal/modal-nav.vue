@@ -4,7 +4,7 @@
     button.button.off-rt(@click.prevent="goToStep('next')" v-if="this.data.current_step.id < 2") Next
     button.button.off-rt(@click.prevent="goToStep('next')" v-if="this.data.current_step.id === 2" v-bind:class="{disabled: this.data.steps[3].status.disabled}") Done &amp; Review
     button.button.off-rt(@click.prevent="ecardSubmitSend()" v-if="this.data.current_step.id === 3")
-        span(v-if="loading") Sending...
+        span(v-if="loading") #[i.edl-icon.edl-icon--arrows-update] Sending...
         span(v-else) Submit &amp; Send
 </template>
 
@@ -27,6 +27,7 @@ export default {
   },
   // Component Functions
   methods: {
+      // Navigation for modal actions
       goToStep(direction) {
         // Get current step
         var current = this.data.current_step.id
@@ -39,6 +40,7 @@ export default {
             this.data.current_step = this.data.steps[current + 1]
         }
     },
+    // eCard Submit Action
     ecardSubmitSend() {
         // Component
         let $this = this
