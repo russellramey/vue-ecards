@@ -24,7 +24,10 @@ ul#modal-message.modal-options(v-bind:class="{active: active}")
         .col-sm-12
             h4 Recipients
             p.notice Each recipient added below will receive a personalized version of the eCard shown in the preview. You can upload multiple recipients at once using the "Import CSV" button below. Make sure to verify that all email addresses are spelled correctly.
+
             a.clear-recipients(@click.prevent="clearAllRecipients" href="#clear" data-qt="Clear all recipients") Clear all
+            csv-import(v-bind:data="data")
+
             ul#recipients
                 Recipients(v-for="(user, index) in data.options.ecard_message.to" v-bind:key="index" v-bind:data="data" v-bind:index="index")
 </template>
@@ -34,6 +37,7 @@ ul#modal-message.modal-options(v-bind:class="{active: active}")
 // Imports
 import Recipients from '../partials/message-recipients.vue'
 import CharacterCount from '../partials/message-charactercount.vue'
+import csvImport from '../partials/csv-import.vue'
 
 // Export Component
 export default {
@@ -41,7 +45,8 @@ export default {
   // Child components
   components: {
       Recipients,
-      CharacterCount
+      CharacterCount,
+      csvImport
   },
   // Component properties
   props: {

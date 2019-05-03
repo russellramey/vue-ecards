@@ -68,7 +68,6 @@ export default {
             } else {
 
                 // Debug
-                console.log(response.data)
                 alert('Success, send data to backend')
 
                 // Set form to complete
