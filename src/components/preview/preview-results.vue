@@ -47,6 +47,8 @@ export default {
         background: #fff
         border: 1px solid #ccc
         border-radius: 5px
+        padding: 20px
+        display: inline-block
 
         tr
             &:nth-child(odd)

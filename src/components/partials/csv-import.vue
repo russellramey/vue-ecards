@@ -3,7 +3,7 @@
     label.button.button-secondary(for="csv-import-action") Import CSV
         input(@change="handleFile" type="file" ref="csv_import" id="csv-import-action" accept=".csv")
 
-    a.csv-template(href="#" download) Download CSV Template
+    a.csv-template(href="files/ecard_csv_import_template.csv" download) Download CSV Template
 </template>
 
 

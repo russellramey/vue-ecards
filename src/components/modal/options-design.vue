@@ -12,7 +12,7 @@ ul#modal-design.modal-options(v-bind:class="{active: active}")
             label.input-radio(:for="option.image")
                 input(v-model="data.options.ecard_design.image" v-bind:id="option.image" v-bind:value="option.image" type="radio" name="data-design")
             img(v-bind:src="'https://assets.sabre.com/images/ecards/' + option.image" width="auto" height="auto")
-            img(src="../../assets/graphic_text_placeholder.png" width="auto" height="auto")
+            img(src="images/graphic_text_placeholder.png" width="auto" height="auto")
 </template>
 
 

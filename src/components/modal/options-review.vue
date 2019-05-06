@@ -4,7 +4,7 @@ ul#modal-review.modal-options(v-bind:class="{active: active}")
         span.label Design &amp; Color
         span.data(v-bind:style="'border: 12px solid ' + data.options.ecard_color.background")
             img(v-if="data.options.ecard_design.image" v-bind:src="'https://assets.sabre.com/images/ecards/' + data.options.ecard_design.image" width="auto" height="auto")
-            img(src="../../assets/graphic_text_placeholder.png" width="auto" height="auto")
+            img(src="images/graphic_text_placeholder.png" width="auto" height="auto")
 
     li.ecard-part.ecard-message
         table
