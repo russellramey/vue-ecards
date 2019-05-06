@@ -1,7 +1,7 @@
 <template lang="pug">
 #sidebar.ecard-settings
     #intro
-        img(src="https://assets.sabre.com/common/edl/img/sabre-logo-slab.svg" width="auto" height="auto")
+        img(src="images/logo_placeholder.jpg" width="auto" height="auto")
         h6 Create and send eCards
         p Choose a card design, select an accent color and write your message. You’ll have a chance to review the eCard before sending.
 
@@ -59,9 +59,6 @@ export default {
         font-size: 14px
 
         img
-            max-width: 160px
-            margin-left: -20px
-            margin-top: -20px
             margin-bottom: 20px
 
 

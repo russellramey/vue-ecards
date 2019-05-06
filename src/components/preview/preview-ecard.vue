@@ -27,7 +27,7 @@
             br
             span.date {{ data.ecard.options.date }}
         p.ecard-logo
-            img(src="https://assets.sabre.com/common/edl/img/sabre-logo-red.svg" width="auto" height="auto")
+            img(src="images/logo_placeholder.jpg" width="auto" height="auto")
 </template>
 
 
