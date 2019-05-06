@@ -52,7 +52,7 @@ export default {
         const axios = require('axios');
 
         // Make Axios(HTTP) request
-        axios.post('http://ecards:8888/inc/submit.php', JSON.stringify(this.data.options))
+        axios.post('./submit/', JSON.stringify(this.data.options))
           .then(function (response) {
 
             // If response is an 'error'
