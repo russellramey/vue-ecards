@@ -4,18 +4,19 @@
         i.edl-icon--check.edl-icon.edl-message--icon
         p #[b eCard sent successfully!] Your eCard has been sent to the recipients listed below.
 
-    table#recipients
-        tr
-            td
-                span.label Name
-            td
-                span.label Email
+    #recipients
+        table
+            tr
+                td
+                    span.label Name
+                td
+                    span.label Email
 
-        tr(v-for="(recipient, index) in this.data.ecard.status.recipients")
-            td
-                span.data {{recipient.name}}
-            td
-                span.data {{recipient.email}}
+            tr(v-for="(recipient, index) in this.data.ecard.status.recipients")
+                td
+                    span.data {{recipient.name}}
+                td
+                    span.data {{recipient.email}}
 </template>
 
 
@@ -38,6 +39,12 @@ export default {
     max-width: 768px
     margin: 30px auto
 
+    #recipients
+        padding: 20px
+        display: block
+        background: #fff
+        border-radius: 5px
+
     // Table
     table
         width: 100%
@@ -45,10 +52,6 @@ export default {
         padding: 0
         margin: 0
         background: #fff
-        border: 1px solid #ccc
-        border-radius: 5px
-        padding: 20px
-        display: inline-block
 
         tr
             &:nth-child(odd)
