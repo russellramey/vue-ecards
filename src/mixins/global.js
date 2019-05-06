@@ -31,6 +31,32 @@ const global = {
             }
 
         },
+        // Make Unique Ids for array items
+        makeUid: function(length) {
+            if (!length){
+                length = 8;
+            }
+            var uid = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            for (var i = 0; i < length; i++){
+                uid += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            return uid;
+        },
+        // Get current date from client
+        todayDate: function() {
+            // Store date variables
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth();
+            var yyyy = today.getFullYear();
+
+            // Month list
+            var monthList = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+
+            // Return data
+            return monthList[mm] + ' ' + dd + ', ' + yyyy;
+        },
         // Tooltips
         tooltip: function () {
             // Get all qt-tooltips
@@ -89,18 +115,6 @@ const global = {
 
             }
         },
-        // Make Unique Ids for array items
-        makeUid: function(length) {
-            if (!length){
-                length = 8;
-            }
-            var uid = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            for (var i = 0; i < length; i++){
-                uid += possible.charAt(Math.floor(Math.random() * possible.length));
-            }
-            return uid;
-        }
     }
 };
 

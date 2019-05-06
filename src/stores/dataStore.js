@@ -7,6 +7,7 @@ const dataStore = {
     // Ecard
     ecard:{
         uid: null,
+        date: null,
         steps:{},
         status: {
             complete: false,
