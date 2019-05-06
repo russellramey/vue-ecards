@@ -34,9 +34,9 @@ export default {
       // Activate tooltips globally
       mixins.methods.tooltip()
       // Register UID for ecard
-      dataStore.ecard.uid = mixins.methods.makeUid(12)
+      dataStore.ecard.options.uid = mixins.methods.makeUid(12)
       // Register today's date for ecard
-      dataStore.ecard.date = mixins.methods.todayDate()
+      dataStore.ecard.options.date = mixins.methods.todayDate()
   }
 }
 </script>

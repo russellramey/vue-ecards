@@ -6,8 +6,6 @@ const dataStore = {
     },
     // Ecard
     ecard:{
-        uid: null,
-        date: null,
         steps:{},
         status: {
             complete: false,
@@ -15,6 +13,8 @@ const dataStore = {
         },
         current_step: null,
         options: {
+            uid: null,
+            date: null,
             ecard_color: {},
             ecard_design: {},
             ecard_message: {

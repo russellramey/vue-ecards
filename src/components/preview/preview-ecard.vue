@@ -25,7 +25,7 @@
             span.author(v-if="data.ecard.options.ecard_message.from[0].name") {{ data.ecard.options.ecard_message.from[0].name }}
             span.author(v-else) Name
             br
-            span.date {{ data.ecard.date }}
+            span.date {{ data.ecard.options.date }}
         p.ecard-logo
             img(src="https://assets.sabre.com/common/edl/img/sabre-logo-red.svg" width="auto" height="auto")
 </template>
