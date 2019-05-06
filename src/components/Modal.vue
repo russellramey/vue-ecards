@@ -2,7 +2,7 @@
 #modal(v-if="dataStore.ecard.current_step != null" v-bind:class="{active: dataStore.modal.active}")
     #modal-meta
         a.modal-close(@click.prevent="closeModal" href="#preview")
-            i.edl-icon.edl-icon--close
+            i.fa.fa-times
         h4 {{dataStore.ecard.current_step.meta.desc}}
 
     #modal-content
@@ -79,8 +79,8 @@ export default {
         padding-bottom: 10px
         overflow: hidden
 
-        .modal-close .edl-icon:before
-            font-size: 24px
+        .modal-close .fa:before
+            font-size: 28px
             font-weight: lighter
 
         h4

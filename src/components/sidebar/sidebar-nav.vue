@@ -2,8 +2,9 @@
 #nav.ecard-nav
     li(v-for="item in navItems" v-bind:key="item.status.step")
         a.nav-link(@click.prevent="navigationController(item)" v-bind:id="item.slug + '-link'" v-bind:class="{active: item.status.active, completed: item.status.complete, disabled: item.status.disabled }" v-bind:href="'#' + item.slug" v-bind:data-qt="item.meta.desc")
-            i(v-bind:class="'edl-icon ' + item.meta.icon")
+            i(v-bind:class="'fa ' + item.meta.icon")
             span {{item.meta.name}}
+            i(class="fa fa-check off-rt" v-if="item.status.complete")
 
     a#action-new(href="#new" onclick="location.reload();") Reset
 </template>
@@ -29,7 +30,7 @@ export default {
                   slug: 'design',
                   meta: {
                       name: 'Design',
-                      icon: 'edl-icon--art-cup',
+                      icon: 'fa-image',
                       desc: 'Choose a design',
                   },
                   status: {
@@ -43,7 +44,7 @@ export default {
                   slug: 'color',
                   meta: {
                       name: 'Accent Color',
-                      icon: 'edl-icon--design-palette',
+                      icon: 'fa-palette',
                       desc: 'Choose a color',
                   },
                   status: {
@@ -57,7 +58,7 @@ export default {
                   slug: 'message',
                   meta: {
                       name: 'Message',
-                      icon: 'edl-icon--message',
+                      icon: 'fa-comment',
                       desc: 'Write your message',
                   },
                   status: {
@@ -71,7 +72,7 @@ export default {
                   slug: 'review',
                   meta: {
                       name: 'Review',
-                      icon: 'edl-icon--check-circle',
+                      icon: 'fa-check-circle',
                       desc: 'Review your eCard',
                   },
                   status: {
@@ -198,16 +199,17 @@ export default {
             border-left-color: #31b98e
 
             &:before
-                content: "\f178"
-                font-family: "spark-icon-line" !important
                 color: #31b98e
-                position: absolute
-                right: 20px
-                font-size: 24px
+
 
         // Icons
-        .edl-icon
+        .fa
             margin-right: 10px
+            position: relative
+            top: 2px
+
+            &:before
+                font-size: 21px
 
 
     // Start over button

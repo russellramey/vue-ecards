@@ -11,9 +11,9 @@ li.recipient-group
 
     .recipient-action
         a.recipient-add(data-qt="Add another" @click="addRecipient(index)")
-            i.edl-icon.edl-icon--math-add
+            i.fa.fa-plus
         a.recipient-remove(v-if="data.options.ecard_message.to.length > 1" data-qt="Remove" @click="deleteRecipient(index)")
-            i.edl-icon.edl-icon--close
+            i.fa.fa-times
 </template>
 
 
@@ -95,6 +95,10 @@ export default {
             &:hover
                 color: #ffffff
                 background: #31B98E
+
+            .fa
+                position: relative
+                top: 1px
 
         .recipient-remove
             background: transparent
