@@ -32,6 +32,8 @@ export default {
   // On Component mount
   mounted(){
       mixins.methods.tooltip()
+      // Register UID for ecard
+      dataStore.ecard.uid = mixins.methods.makeUid(12)
   }
 }
 </script>
