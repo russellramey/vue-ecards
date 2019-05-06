@@ -15,7 +15,7 @@
             span(v-else) To Name
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit name")
         p.ecard-message.data-container
-            span(v-if="data.ecard.options.ecard_message.comments") {{ data.ecard.options.ecard_message.comments }}
+            pre(v-if="data.ecard.options.ecard_message.comments") {{ data.ecard.options.ecard_message.comments }}
             span(v-else) Your message will show here, consectetur adipiscing elit. Nulla in egestas justo. Aliquam diam nibh, pharetra nec mattis eu, tempor at lacus. Vivamus ac lorem lacus. Mauris augue mi, feugiat in est eget, iaculis tempus nibh. Aliquam tristique, neque sed pellentesque fermentum, massa risus tincidunt ipsum, sed tempor magna sem at nisl.
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit message")
 
