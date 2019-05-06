@@ -40,3 +40,9 @@ export default {
   }
 }
 </script>
+
+
+<style lang="sass">
+// Import base styles
+@import ./assets/sass/app.base
+</style>
