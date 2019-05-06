@@ -17,8 +17,8 @@ if(in_array( $host['host'], $allowedDomains)) {
     $postData = json_decode($request, true);
 
     // Email options
-    $subject = "You received an eCard from " . $postData['ecard_message']['from']['name'];
-    $headers = "From: " . $postData['ecard_message']['from']['name'] . " <" . $postData['ecard_message']['from']['email'] . ">" . "\n" . "Reply-To: " . $postData['ecard_message']['from']['email'] . "\n" . "MIME-Version: 1.0" . "\n" . "Content-type: text/html; charset=UTF-8" . "\n";
+    $subject = "You received an eCard from " . $postData['ecard_message']['from'][0]['name'];
+    $headers = "From: " . $postData['ecard_message']['from'][0]['name'] . " <" . $postData['ecard_message']['from'][0]['email'] . ">" . "\n" . "Reply-To: " . $postData['ecard_message']['from'][0]['email'] . "\n" . "MIME-Version: 1.0" . "\n" . "Content-type: text/html; charset=UTF-8" . "\n";
 
     // Store Sent Arrays
     $recipientSent = [];
@@ -39,7 +39,7 @@ if(in_array( $host['host'], $allowedDomains)) {
             }
 
             // Create customized email per each recipient
-            include 'ecard-email.php';
+            include 'email-ecard.php';
 
             // If no recipient email errors, and not a duplicate recipient
             // checking for duplicate email address helps prevent spam blasts
@@ -63,7 +63,7 @@ if(in_array( $host['host'], $allowedDomains)) {
         if (!empty($recipientSent)){
 
             // Success email
-            include 'success-email.php';
+            include 'email-success.php';
 
             // Return final data
             echo json_encode($recipientSent, true);

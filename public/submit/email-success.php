@@ -99,5 +99,5 @@ $successMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN
     $successSubject = 'You sent ' . $recipientCount . ' eCard(s)';
 
     // Send email to Sender
-    mail($postData['ecard_message']['from']['email'], $successSubject, $successMessage, $headers);
+    mail($postData['ecard_message']['from'][0]['email'], $successSubject, $successMessage, $headers);
 ?>

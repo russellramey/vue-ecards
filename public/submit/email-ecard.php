@@ -38,7 +38,7 @@ $message = '<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;">
                                 </tr>
                                 <tr>
                                     <td align="left" style="padding-right: 50px; padding-left: 50px; padding-top: 20px; padding-bottom:20px;">
-                                        <p style="font-family: sans-serif; font-size: 14px; line-height:21px; font-weight: lighter; margin: 0;">Sent by: ' . $postData['ecard_message']['from']['name'] . ' <br /><span>' . $postData['date'] .'</span></p>
+                                        <p style="font-family: sans-serif; font-size: 14px; line-height:21px; font-weight: lighter; margin: 0;">Sent by: ' . $postData['ecard_message']['from'][0]['name'] . ' <br /><span>' . $postData['date'] .'</span></p>
                                     </td>
                                     <td></td>
                                     <td align="right" style="padding-right: 50px; padding-left: 50px; padding-top: 20px; padding-bottom:20px;">
