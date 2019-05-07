@@ -1,8 +1,8 @@
 <template lang="pug">
 #ecard.preview.preview-data(v-bind:style="'border-color:' + data.ecard.options.ecard_color.shadow")
     .ecard-graphic.data-container
-        img#ecard-image.preview-data(v-if="data.ecard.options.ecard_design.image" v-bind:src="'https://assets.sabre.com/images/ecards/' + data.ecard.options.ecard_design.image" width="auto" height="auto")
-        img#ecard-image.preview-data(v-else src="https://assets.sabre.com/images/ecards/CNY2019-BANNER-1.jpg" width="auto" height="auto")
+        img#ecard-image.preview-data(v-if="data.ecard.options.ecard_design.image" v-bind:src="'images/ecards/' + data.ecard.options.ecard_design.image" width="auto" height="auto")
+        img#ecard-image.preview-data(v-else src="images/graphic_placeholder.jpg" width="auto" height="auto")
         .data-mask(@click="goToStep(0)" data-qt="Edit design")
 
     .ecard-content
@@ -15,7 +15,7 @@
             span(v-else) To Name
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit name")
         p.ecard-message.data-container
-            pre(v-if="data.ecard.options.ecard_message.comments") {{ data.ecard.options.ecard_message.comments }}
+            span(v-if="data.ecard.options.ecard_message.comments") {{ data.ecard.options.ecard_message.comments }}
             span(v-else) Your message will show here, consectetur adipiscing elit. Nulla in egestas justo. Aliquam diam nibh, pharetra nec mattis eu, tempor at lacus. Vivamus ac lorem lacus. Mauris augue mi, feugiat in est eget, iaculis tempus nibh. Aliquam tristique, neque sed pellentesque fermentum, massa risus tincidunt ipsum, sed tempor magna sem at nisl.
             span.data-mask(@click.prevent="goToStep(2)" data-qt="Edit message")
 
@@ -96,6 +96,10 @@ export default {
         .ecard-message
             cursor: pointer
             display: block
+
+        .ecard-message
+            span
+                white-space: pre-wrap
 
         .ecard-name
             display: inline-block

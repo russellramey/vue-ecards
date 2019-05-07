@@ -3,7 +3,7 @@ ul#modal-review.modal-options(v-bind:class="{active: active}")
     li.ecard-part.ecard-design
         span.label Design &amp; Color
         span.data(v-bind:style="'border: 12px solid ' + data.options.ecard_color.background")
-            img(v-if="data.options.ecard_design.image" v-bind:src="'https://assets.sabre.com/images/ecards/' + data.options.ecard_design.image" width="auto" height="auto")
+            img(v-if="data.options.ecard_design.image" v-bind:src="'images/ecards/' + data.options.ecard_design.image" width="auto" height="auto")
             img(src="images/text_placeholder.jpg" width="auto" height="auto")
 
     li.ecard-part.ecard-message
@@ -62,10 +62,6 @@ export default {
           // Is active
           active: false
       }
-  },
-  // Component functions
-  methods: {
-
   },
   // Component Mounted
   mounted() {
