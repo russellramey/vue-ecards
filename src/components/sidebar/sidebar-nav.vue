@@ -1,10 +1,9 @@
 <template lang="pug">
 #nav.ecard-nav
-    li(v-for="item in navItems" v-bind:key="item.status.step")
+    li(v-for="(item, index) in navItems" v-bind:key="index")
         a.nav-link(@click.prevent="navigationController(item)" v-bind:id="item.slug + '-link'" v-bind:class="{active: item.status.active, completed: item.status.complete, disabled: item.status.disabled }" v-bind:href="'#' + item.slug" v-bind:data-qt="item.meta.desc")
             i(v-bind:class="'fa ' + item.meta.icon")
             span {{item.meta.name}}
-            i(class="fa fa-check off-rt" v-if="item.status.complete")
 
     a#action-new(href="#new" onclick="location.reload();") Reset
 </template>
