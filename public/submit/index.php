@@ -1,9 +1,9 @@
 <?php
 // App Config Variables
 // Asset URL
-$baseURL = 'https://assets.sabre.com/images/ecards/';
+$baseURL = 'APPURLHERE';  // Replace with the path to the application
 // Allowed domains
-$allowedDomains = array('ecards', 'localhost', 'corp.sabre.com', 'www.crt.aws.sabrenow.com');
+$allowedDomains = array('localhost', 'ecards'); // Add whitelist domains here (to allow POST requests)
 // Headers
 $headers = $_SERVER['HTTP_REFERER'];
 $host = parse_url($headers);

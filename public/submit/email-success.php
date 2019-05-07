@@ -18,7 +18,7 @@ $successMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN
                     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                    <title>PROPS | Sabre</title>
+                    <title>eCard Send Confirmation</title>
                     <style type="text/css">
                     @media only screen and (max-width: 640px) {
                     table.content {
@@ -49,7 +49,7 @@ $successMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN
                                     <!-- LOGO -->
                                     <tr>
                                         <td class="logo" align="left">
-                                            <img src="https://assets.sabre.com/common/edl/img/sabre-logo-slab.png" width="160" height="64"  style="width:160px; height: 64x;" />
+                                            <img src="<?php echo $baseURL; ?>images/logo_placeholder.jpg" width="300" height="100" />
                                         </td>
                                     </tr>
                                     <!-- MAIN HEADLINE -->
@@ -75,12 +75,6 @@ $successMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN
                                         			. $successTable .
                                         		'</tbody>
                                         	</table>
-                                        </td>
-                                    </tr>
-                                    <!-- FOOTER -->
-                                    <tr>
-                                        <td class="footer" style="padding-top:20px; padding-bottom:40px; padding-left:30px; padding-right:30px; background:#e4e4e4; background-color:#e4e4e4;" >
-                                            <p style="font-family:arial, sans-serif; font-size:12px; color:#aaaaaa; line-height:16px; margin-top:0px; margin-bottom:0px; margin-left:0; margin-right:0;">This message contains information that may be proprietary or confidential, and may include material non-public information. Disclosing proprietary, confidential or material non-public information to any person outside of the company, or trading securities when you have material non-public information, is prohibited by the <a href="http://investors.sabre.com/static-files/dc300205-33ad-4447-b69f-fa98c695b653">Sabre Code of Business Ethics</a> and may violate U.S. securities laws.</p>
                                         </td>
                                     </tr>
                                     </tbody>

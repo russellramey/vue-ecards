@@ -4,7 +4,7 @@ $message = '<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Sabre eCard Template</title>
+            <title>eCard Template</title>
             </head>
             <body marginheight="0" marginwidth="0" topmargin="0" bottommargin="0" yahoo="fix" width="100%" height="100%" style="min-width:100%; width:100%; height:100%; margin-top:0; margin-bottom:0; margin-left:0; margin-right:0; padding-top:0; padding-left:0; padding-bottom:0; padding-right:0; border:0;">
             <custom name="opencounter" type="tracking">
@@ -42,7 +42,7 @@ $message = '<html xmlns="http://www.w3.org/1999/xhtml" style="height: 100%;">
                                     </td>
                                     <td></td>
                                     <td align="right" style="padding-right: 50px; padding-left: 50px; padding-top: 20px; padding-bottom:20px;">
-                                        <img src="' . $baseURL . 'sabre-logo.png" width="140" height="50" style="display: block;">
+                                        <img src="' . $baseURL . 'logo_placeholder.jpg" width="140" height="50" style="display: block;">
                                     </td>
                                 </tr>
                                 <tr>
