@@ -1,7 +1,7 @@
 <template lang="pug">
 ul#modal-design.modal-options(v-bind:class="{active: active}")
     li
-        p.edl-select
+        p.custom-select
             select#cateogry(v-model="currentCategory")
                 option(disabled selected value="null") Filter designs by...
                 option(value="all") SHOW ALL
@@ -151,4 +151,18 @@ export default {
             input[type="radio"]
                 visibility: hidden
                 display: none
+
+    // Select / Filter
+    .custom-select
+        position: relative
+
+        &:after
+            content: '\0203A'
+            display: block
+            position: absolute
+            top: 12px
+            right: 15px
+            transform: rotate(90deg)
+            font-size: 28px
+            line-height: 1
 </style>
