@@ -1,11 +1,7 @@
 <template lang="pug">
 ul#modal-design.modal-options(v-bind:class="{active: active}")
     li
-        p.custom-select
-            select#cateogry(v-model="currentCategory")
-                option(disabled selected value="null") Filter designs by...
-                option(value="all") SHOW ALL
-                option(v-for="(category, index) in designOptionCategories" v-bind:value="category.toLowerCase()") {{ category }}
+        category-filter(v-bind:options="options" @current-category="currentCategoryOption")
 
     li(v-for="(option, index) in options" v-bind:key="index" v-if="option.category.toLowerCase() === currentCategory || currentCategory === null || currentCategory === 'all'")
         a.option.option-design(@click="currentSelection(index)" v-bind:class="{active: option.active}")
@@ -19,10 +15,15 @@ ul#modal-design.modal-options(v-bind:class="{active: active}")
 <script>
 // Imports
 import dataOptions from '../../stores/dataOptions.js'
+import CategoryFilter from '../partials/category-filter.vue'
 
 // Export Component
 export default {
   name: 'design',
+  // Child components
+  components: {
+      CategoryFilter
+  },
   // Component properties
   props: {
       // Data from parent/App
@@ -35,8 +36,6 @@ export default {
       return {
           // Available Design Options
           options: dataOptions.designs,
-          // Available Design Categories
-          categoryOptions: null,
           // Current Design Category
           currentCategory: null,
           // Is active
@@ -62,31 +61,13 @@ export default {
       // Validate user action in Nav
       validateStep() {
           this.data.current_step.status.complete = true
-      }
-  },
-  // Component computed data
-  computed: {
-      // Create Category Filter Options
-      designOptionCategories: function() {
-          // Empty category array
-          let categories = []
-
-          // For each option in available options
-          for (var option in this.options) {
-
-              // Save category as var, and make it all uppercase
-              let category = this.options[option].category.toUpperCase()
-
-              // If current category is not in the Category array, add it
-              if (!categories.includes(category)){
-                  categories.push(category)
-              }
-
+      },
+      // Get current category
+      currentCategoryOption (category) {
+          if (category){
+              this.currentCategory = category
           }
-
-          // Return data
-          return categories.sort()
-      }
+      },
   },
   // Component Mounted
   mounted() {
@@ -151,18 +132,4 @@ export default {
             input[type="radio"]
                 visibility: hidden
                 display: none
-
-    // Select / Filter
-    .custom-select
-        position: relative
-
-        &:after
-            content: '\0203A'
-            display: block
-            position: absolute
-            top: 12px
-            right: 15px
-            transform: rotate(90deg)
-            font-size: 28px
-            line-height: 1
 </style>
