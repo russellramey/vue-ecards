@@ -47,7 +47,7 @@ export default {
 
               // If current category is not in the Category array, add it
               if (!categories.includes(category)){
-                  categories.push(category)
+                  categories.push(category.replace('-', ' '))
               }
 
           }
