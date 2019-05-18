@@ -10,8 +10,7 @@ foreach ($recipientSent as $recipient) {
                         </td>
                     </tr>';
 };
-// Count recipents
-$recipientCount = count($recipientSent);
+// Sucess message html
 $successMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
                     <html xmlns="http://www.w3.org/1999/xhtml">
                     <head>
@@ -56,7 +55,7 @@ $successMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN
                                     <tr>
                                         <td class="main" align="left" style="padding-bottom:0px; padding-left:30px; padding-right:30px; padding-top:30px;">
                                             <p style="font-family:arial, sans-serif; font-size:34px; color:#333; mso-line-height-rule:exactly; line-height:30px; margin-top:10px; margin-bottom:0px; margin-left:0; margin-right:0;">eCard(s) sent successfully</p>
-                                            <p style="font-family:arial, sans-serif; font-size:13px; color:#999; mso-line-height-rule:exactly; line-height:12px; margin-top:10px; margin-bottom:0px; margin-left:0; margin-right:0; text-transform:uppercase;">' . $recipientCount . ' people received your eCard</p>
+                                            <p style="font-family:arial, sans-serif; font-size:13px; color:#999; mso-line-height-rule:exactly; line-height:12px; margin-top:10px; margin-bottom:0px; margin-left:0; margin-right:0; text-transform:uppercase;">' . count($recipientSent) . ' people received your eCard</p>
                                         </td>
                                     </tr>
                                     <!-- RECIPIENTS -->
