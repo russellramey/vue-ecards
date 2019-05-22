@@ -3,7 +3,7 @@ p.custom-select
     select#cateogry(v-model="currentCategory" @change="selectCategoryFilter")
         option(disabled selected value="null") Filter designs by...
         option(value="all") SHOW ALL
-        option(v-for="(category, index) in designOptionCategories" v-bind:value="category.toLowerCase()") {{ category }}
+        option(v-for="(category, index) in designOptionCategories" v-bind:value="category.toLowerCase()") {{ category.replace('-', ' ') }}
 </template>
 
 
@@ -47,7 +47,7 @@ export default {
 
               // If current category is not in the Category array, add it
               if (!categories.includes(category)){
-                  categories.push(category.replace('-', ' '))
+                  categories.push(category)
               }
 
           }

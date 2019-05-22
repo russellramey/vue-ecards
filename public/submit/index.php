@@ -1,13 +1,21 @@
 <?php
-// App Config Variables
+// SUBMIT/SEND CONFIG
+
 // Asset URL
-$baseURL = 'APPURLHERE';  // Replace with the path to the application
+// Replace with the document root path to the application
+$baseURL = 'REPLACE-APP-URL-HERE';
+
 // Allowed domains
-$allowedDomains = array('localhost', 'ecards'); // Add whitelist domains here (to allow POST requests)
-// Headers
+// Add whitelist domains here (to allow POST requests)
+$allowedDomains = array(
+    'localhost',
+    'ecards'
+);
+
+// STOP EDITING HERE
+// Get Headers
 $headers = $_SERVER['HTTP_REFERER'];
 $host = parse_url($headers);
-
 
 // Check if host is same as app
 if(in_array( $host['host'], $allowedDomains)) {
