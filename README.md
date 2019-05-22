@@ -1,6 +1,9 @@
 # Vue eCards
 Simple VueJS app to create and send eCards to up to 100 recipients at a time. Self-hosted and whitelabel ready, download, configure, and launch. Great for internal employee recognitions, or for employees and account managers to send holiday emails (eCards) to customers!
 
+## Demo
+View the [live demo here](https://russellramey.me/examples/vue-ecards). eCards made using this demo application will not be sent.
+
 ## Requirements
 - [NodeJS + NPM](https://nodejs.org/en/)
 
