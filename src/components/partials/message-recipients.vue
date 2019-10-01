@@ -98,7 +98,7 @@ export default {
 
             .fa
                 position: relative
-                top: 1px
+                //top: 1px
 
         .recipient-remove
             background: transparent

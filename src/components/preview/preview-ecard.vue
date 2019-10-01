@@ -1,7 +1,7 @@
 <template lang="pug">
 #ecard.preview.preview-data(v-bind:style="'border-color:' + data.ecard.options.ecard_color.shadow")
     .ecard-graphic.data-container
-        img#ecard-image.preview-data(v-if="data.ecard.options.ecard_design.image" v-bind:src="'images/ecards/' + data.ecard.options.ecard_design.image" width="auto" height="auto")
+        img#ecard-image.preview-data(v-if="data.ecard.options.ecard_design.image" v-bind:src="'images/' + data.ecard.options.ecard_design.image" width="auto" height="auto")
         img#ecard-image.preview-data(v-else src="images/graphic_placeholder.jpg" width="auto" height="auto")
         .data-mask(@click="goToStep(0)" data-qt="Edit design")
 

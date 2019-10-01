@@ -7,7 +7,7 @@ ul#modal-design.modal-options(v-bind:class="{active: active}")
         a.option.option-design(@click="currentSelection(index)" v-bind:class="{active: option.active}")
             label.input-radio(:for="option.image")
                 input(v-model="data.options.ecard_design.image" v-bind:id="option.image" v-bind:value="option.image" type="radio" name="data-design")
-            img(v-bind:src="'images/ecards/' + option.image" width="auto" height="auto")
+            img(v-bind:src="'images/' + option.image" width="auto" height="auto")
             img(src="images/text_placeholder.jpg" width="auto" height="auto")
 </template>
 
