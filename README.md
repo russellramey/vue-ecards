@@ -9,10 +9,7 @@ View a [live demo here](https://russellramey.me/examples/vue-ecards).
 ### Development
 - NodeJS
 - NPM
-### Production
-- Default
-    - Apache or Nginx
-    - PHP 5.6+
+- PHP 5.6+
 
 ## Technologies
 - VueJS
