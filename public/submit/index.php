@@ -3,7 +3,7 @@
 
 // Asset URL
 // Replace with the document root path to the application
-$baseURL = 'REPLACE-APP-URL-HERE';
+$baseURL = 'REPLACE_APP_URL_HERE';
 
 // Allowed domains
 // Add whitelist domains here (to allow POST requests)
