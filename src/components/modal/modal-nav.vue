@@ -84,6 +84,13 @@ export default {
           .catch(function (error) {
             alert(error)
           });
+
+
+          // // COMPLETE FORM WITHOUT SERVER REQUEST
+          // // Set form to complete
+          // this.data.status.complete = true
+          // // Save response to data
+          // this.data.status.recipients = this.data.options.ecard_message.to
     }
   }
 }
